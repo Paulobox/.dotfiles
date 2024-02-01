@@ -231,10 +231,12 @@ if [ -x /usr/bin/dircolors ]; then
 
 # nvims aliases 
 alias p="NVIM_APPNAME=paulo nvim"
-#alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-#alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-#alias nvim-chad="NVIM_APPNAME=nvchad nvim"
-#alias nvim-astro="NVIM_APPNAME=astro nvim"
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-prime="NVIM_APPNAME=prime nvim"
+# alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+alias nvim-chad="NVIM_APPNAME=nvchad nvim"
+alias chad="NVIM_APPNAME=nvchad nvim"
+alias nvim-astro="NVIM_APPNAME=astro nvim"
 
 #function nvims() {
 #   items=("default" "kickstart" "LazyVim" "nvchad" "astro")
@@ -295,3 +297,5 @@ if [ -f /etc/zsh_command_not_found ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -e /home/kali/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kali/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
