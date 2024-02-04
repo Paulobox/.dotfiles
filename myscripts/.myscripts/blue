@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Prompt the user to enter the desired color temperature in Kelvin
+echo "Enter the desired color temperature in Kelvin:"
+read kelvin
+
+# Set the color temperature using redshift
+redshift -P -m randr -O $kelvin

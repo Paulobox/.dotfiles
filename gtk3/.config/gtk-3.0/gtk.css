@@ -1,0 +1,5 @@
+#xfce4-notification-plugin {
+	padding: 1px;
+	color: #000;
+}
+#xfce4-notification-plugin * { -gtk-icon-transform: scale(1.10); }

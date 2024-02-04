@@ -284,6 +284,9 @@ alias lsal='ls -a -CF | lolcat'
 alias lsa='ls -a -CF'
 alias allapps="apt-mark showmanual | xargs apt-cache show | awk '/Package:/ {printf \$2 \"----->(Version:\"} /Version:/ {print \$2\")\"}' | grep --color=always -E 'Version:|$'"
 
+# exported paths environmental
+export PATH=$PATH:~/.myscripts
+
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
     . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+wallpaper=$(find ~/Pictures/wallpapers -type f \( -name "*.jpg" -o -name "*.png" \) 2>/dev/null | dmenu -i -l 50)
+
+[ -z "$wallpaper" ] || feh --bg-fill "$wallpaper"

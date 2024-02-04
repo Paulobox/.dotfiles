@@ -1,0 +1,1 @@
+/home/kali/.fzf/shell/key-bindings.fish

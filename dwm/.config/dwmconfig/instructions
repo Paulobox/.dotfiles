@@ -1,0 +1,12 @@
+create entry /usr/share/xsessions/ dwm.desktop
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=dwm
+Comment=Dynamic Window Manager
+Exec=dwm
+Type=Application
+
+make .xinitrc in ~ directroy and add:
+
+exec dwm
