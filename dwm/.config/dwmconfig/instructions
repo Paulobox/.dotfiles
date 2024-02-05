@@ -24,3 +24,6 @@ git clone https://git.suckless.org/st
 
 git clone https://git.suckless.org/slstatus
 --status bar
+
+static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
+{ 0,			        XK_Print,  spawn,	   {.v = prtscrcmd } },
