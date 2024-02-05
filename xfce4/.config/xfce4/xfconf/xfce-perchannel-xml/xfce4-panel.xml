@@ -66,6 +66,7 @@
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
         <value type="string" value="code.desktop"/>
         <value type="string" value="kali-undercover.desktop"/>
         <value type="string" value="kali-amass.desktop"/>
@@ -75,7 +76,6 @@
         <value type="string" value="kali-armitage.desktop"/>
         <value type="string" value="kali-forums.desktop"/>
         <value type="string" value="fish.desktop"/>
-        <value type="string" value="discord.desktop"/>
       </property>
     </property>
     <property name="plugin-10" type="string" value="separator"/>

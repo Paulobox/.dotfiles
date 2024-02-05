@@ -1,12 +1,26 @@
 create entry /usr/share/xsessions/ dwm.desktop
 
 [Desktop Entry]
-Encoding=UTF-8
 Name=dwm
 Comment=Dynamic Window Manager
+TryExec=dwm
 Exec=dwm
 Type=Application
 
 make .xinitrc in ~ directroy and add:
 
 exec dwm
+
+
+--downloads
+git clone https://git.suckless.org/dwm
+--window manager
+          
+git clone https://git.suckless.org/dmenu
+--searchbar
+        
+git clone https://git.suckless.org/st
+--st terminal
+
+git clone https://git.suckless.org/slstatus
+--status bar
