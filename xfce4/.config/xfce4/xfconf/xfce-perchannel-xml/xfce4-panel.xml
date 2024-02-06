@@ -14,6 +14,7 @@
         <value type="int" value="13"/>
         <value type="int" value="7"/>
         <value type="int" value="23"/>
+        <value type="int" value="25"/>
         <value type="int" value="24"/>
         <value type="int" value="8"/>
         <value type="int" value="9"/>
@@ -66,6 +67,8 @@
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="gimp.desktop"/>
+        <value type="string" value="kali-nmap.desktop"/>
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
         <value type="string" value="code.desktop"/>
         <value type="string" value="kali-undercover.desktop"/>
@@ -74,8 +77,6 @@
         <value type="string" value="cherrytree.desktop"/>
         <value type="string" value="audacious.desktop"/>
         <value type="string" value="kali-armitage.desktop"/>
-        <value type="string" value="kali-forums.desktop"/>
-        <value type="string" value="fish.desktop"/>
       </property>
     </property>
     <property name="plugin-10" type="string" value="separator"/>
@@ -197,6 +198,11 @@
     <property name="plugin-24" type="string" value="launcher">
       <property name="items" type="array">
         <value type="string" value="17070892101.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-25" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17072288181.desktop"/>
       </property>
     </property>
   </property>
