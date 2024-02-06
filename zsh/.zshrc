@@ -1,6 +1,13 @@
 # ~/.zshrc file for zsh interactive shells.
 # see /usr/share/doc/zsh/examples/zshrc for examples
 
+source_if_exists () {
+    if test -r "$1"; then
+        source "$1"
+    fi
+}
+source_if_exists $HOME/.zshrcAlias
+
 setopt autocd              # change directory just by typing its name
 #setopt correct            # auto correct mistakes
 setopt interactivecomments # allow comments in interactive mode
@@ -55,9 +62,6 @@ setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 #setopt share_history         # share command history data
-
-# force zsh to show the complete history
-alias history="history 0"
 
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
@@ -217,26 +221,6 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     export LS_COLORS="$LS_COLORS:ow=30;44:" # fix ls color for folders with 777 permissions
 
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-    alias diff='diff --color=auto'
-    alias ip='ip --color=auto'
-    alias c='clear'
-    alias list='(echo "total $(ls -lrthk --color=auto --time-style="+%m/%d/%Y %H:%M" | wc -l)K"; ls -lrthk --color=auto --time-style="+%m/%d/%Y %H:%M") | nl'
-
-# nvims aliases 
-alias p="NVIM_APPNAME=paulo nvim"
-alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
-alias nvim-prime="NVIM_APPNAME=prime nvim"
-# alias nvim-kick="NVIM_APPNAME=kickstart nvim"
-alias nvim-chad="NVIM_APPNAME=nvchad nvim"
-alias chad="NVIM_APPNAME=nvchad nvim"
-alias nvim-astro="NVIM_APPNAME=astro nvim"
 
 #function nvims() {
 #   items=("default" "kickstart" "LazyVim" "nvchad" "astro")
@@ -265,27 +249,7 @@ bindkey -s ^n "nvims\n"
     zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 fi
 
-# some more ls aliases
-alias lexa='exa --long --header'
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-alias lla='ls -la'
-alias tspreed='tspreed -k'
-alias lol='ls -A | lolcat'
-alias vim='nvim'
-alias v='nvim'
-alias n='nvim'
-alias cmatrixlol='cmatrix | lolcat'
-alias aqua='asciiquarium'
-alias aqualol='asciiquarium | lolcat'
-alias llal='ls -la | lolcat'
-alias lsal='ls -a -CF | lolcat'
-alias lsa='ls -a -CF'
-alias allapps="apt-mark showmanual | xargs apt-cache show | awk '/Package:/ {printf \$2 \"----->(Version:\"} /Version:/ {print \$2\")\"}' | grep --color=always -E 'Version:|$'"
 
-# exported paths environmental
-export PATH=$PATH:~/.myscripts
 
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
