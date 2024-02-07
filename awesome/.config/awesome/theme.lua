@@ -9,13 +9,16 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local beautiful = require("beautiful")
+beautiful.gap_single_client   = false
+
 local theme = {}
 
-theme.font          = "sans 8"
+theme.font          = "Sans 8"
 
 theme.hotkeys_modifiers_fg = "#000000"
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
+theme.bg_focus      = "#414141"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -25,10 +28,10 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.useless_gap   = dpi(13)
+theme.border_width  = dpi(3)
+theme.border_normal = "#535d6c"
+theme.border_focus  = "#a60000"
 theme.border_marked = "#91231c"
 
 theme.hotkeys_modifiers_fg = "#d5ddf3"

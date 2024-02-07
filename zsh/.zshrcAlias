@@ -14,6 +14,9 @@ alias list='(echo "total $(ls -lrthk --color=auto --time-style="+%m/%d/%Y %H:%M"
 alias history="history 0"
 
 # nvims aliases 
+alias v='nvim'
+alias vim='nvim'
+alias n='nvim'
 alias p="NVIM_APPNAME=paulo nvim"
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 alias nvim-prime="NVIM_APPNAME=prime nvim"
@@ -31,9 +34,6 @@ alias l='ls -CF'
 alias lla='ls -la'
 alias tspreed='tspreed -k'
 alias lol='ls -A | lolcat'
-alias vim='nvim'
-alias v='nvim'
-alias n='nvim'
 alias matrixlol='cmatrix | lolcat'
 alias aqua='asciiquarium'
 alias aqualol='asciiquarium | lolcat'
