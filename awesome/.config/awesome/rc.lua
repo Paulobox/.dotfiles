@@ -322,7 +322,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-    awful.tag({ "1-fun www", "2-nvim", "3-terminal", "4-www", "5-tmux", "6-ranger", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1-terminal", "2-www", "3-kitty", "4-nvim", "5-tmux", "6-ranger", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -465,9 +465,9 @@ globalkeys = gears.table.join(
     {description = "toggle wibox", group = "awesome"}),
 
   -- increase decrease gap size
-  awful.key({ modkey, "Shift" }, "-", function () awful.tag.incgap(1)    end,
+  awful.key({ modkey, }, "=", function () awful.tag.incgap(1)    end,
     {description = "increase gap", group = "layout"}),
-  awful.key({ modkey, "Shift" }, "=", function () awful.tag.incgap(-1)    end,
+  awful.key({ modkey, }, "-", function () awful.tag.incgap(-1)    end,
     {description = "decrease gap", group = "layout"}),
 
   -- other keybindings

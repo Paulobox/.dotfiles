@@ -1,4 +1,4 @@
 ~/.fehbg &
 picom &
-slstatus 2>&1 >/dev/null &
+slstatus &
 exec dwm
