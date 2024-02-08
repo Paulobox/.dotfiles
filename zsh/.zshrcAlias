@@ -1,6 +1,7 @@
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
+alias lfd='ranger'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -27,7 +28,8 @@ alias nvim-astro="NVIM_APPNAME=astro nvim"
 
 
 # some more ls aliases
-alias lexa='exa --long --header'
+alias leza='eza --long --header -g --icons'
+alias lezat='eza --long --header -g --icons --tree --level=2 -a'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -41,6 +43,3 @@ alias llal='ls -la | lolcat'
 alias lsal='ls -a -CF | lolcat'
 alias lsa='ls -a -CF'
 alias allapps="apt-mark showmanual | xargs apt-cache show | awk '/Package:/ {printf \$2 \"----->(Version:\"} /Version:/ {print \$2\")\"}' | grep --color=always -E 'Version:|$'"
-
-# exported paths environmental
-export PATH=$PATH:~/.myscripts

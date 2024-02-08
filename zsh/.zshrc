@@ -1,6 +1,11 @@
 # ~/.zshrc file for zsh interactive shells.
 # see /usr/share/doc/zsh/examples/zshrc for examples
 
+# exported paths environmental
+export PATH=$PATH:~/.myscripts
+export PATH="$PATH:/home/kali/.local/share/applications"
+export FPATH="$HOME/eza/completions/zsh:$FPATH"
+
 source_if_exists () {
     if test -r "$1"; then
         source "$1"
@@ -266,3 +271,4 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -e /home/kali/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kali/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+eval "$(zoxide init zsh)"

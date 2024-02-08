@@ -66,7 +66,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod1"
+modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -122,6 +122,8 @@ end
                                      -- menu = mymainmenu })
 -- seperator
 tbox_seperator = wibox.widget.textbox ("ofocus")
+--keyboard emoji
+keyboard_emoji = wibox.widget.textbox ("⌨")
 
 -- custom widgets
 local cpu_widget = lain.widget.cpu {
@@ -257,9 +259,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
+
 -- {{{ Wibar
 -- Create a textclock widget / time format
-mytextclock = wibox.widget.textclock(" %A, %d-%m-%Y │ %H:%M ")
+mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -322,7 +325,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     -- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
-    awful.tag({ "1-terminal", "2-www", "3-kitty", "4-nvim", "5-tmux", "6-ranger", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1-terminal", "2-www", "3-kitty", "4-tmux", "5-nvim", "6-Thunar", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -378,6 +381,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
             layout = wibox.layout.fixed.horizontal,
             tbox_seperator,
+            keyboard_emoji,
             mykeyboardlayout,
             tbox_seperator,
             wibox.widget.systray(),
@@ -452,6 +456,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
+  --screenshot
+  awful.key({},            "Print",     function () awful.spawn("flameshot gui") end ),
+
     -- additional mysettings
   -- Show/Hide Wibox
   awful.key({ modkey }, "b", function ()
@@ -464,13 +471,22 @@ globalkeys = gears.table.join(
   end,
     {description = "toggle wibox", group = "awesome"}),
 
+
   -- increase decrease gap size
   awful.key({ modkey, }, "=", function () awful.tag.incgap(1)    end,
     {description = "increase gap", group = "layout"}),
   awful.key({ modkey, }, "-", function () awful.tag.incgap(-1)    end,
     {description = "decrease gap", group = "layout"}),
+  awful.key({ modkey, "Shift" }, "=", function () awful.tag.incgap(4)    end,
+    {description = "increase gap", group = "layout"}),
+  awful.key({ modkey, "Shift" }, "-", function () awful.tag.incgap(-4)    end,
+    {description = "decrease gap", group = "layout"}),
 
   -- other keybindings
+  -- rofi menu
+  awful.key({ modkey, "Shift" }, "r", function () awful.spawn("rofi -show drun") end,
+    {description = "Show Rofi drun menu", group = "launcher"}),
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -531,7 +547,7 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey,           }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
@@ -657,6 +673,8 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
+          "Mousepad",
+          "qterminal",
           "Arandr",
           "Alacritty",
           "Blueman-manager",
@@ -679,7 +697,7 @@ awful.rules.rules = {
           "ConfigManager",  -- Thunderbird's about:config.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+      }, properties = { floating = true, maximized = false, placement = awful.placement.centered }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -706,6 +724,16 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
+
+-- remove borders if maximized
+client.connect_signal("property::maximized", function(c)
+    if c.maximized then
+        c.border_width = 0
+    else
+        c.border_width = beautiful.border_width
+    end
+end)
+
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
@@ -759,3 +787,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Applications
 -- awful.spawn.with_shell("picom")
 awful.spawn.with_shell("~/.fehbg")
+-- Autostart Applications
+-- awful.spawn.with_shell("picom")
+awful.spawn.with_shell("~/.fehbg")
+awful.spawn.with_shell("setxkbmap -layout 'us,gb' -option 'grp:win_space_toggle'")
