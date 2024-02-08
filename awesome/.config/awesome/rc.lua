@@ -395,11 +395,11 @@ end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+-- root.buttons(gears.table.join(
+    -- awful.button({ }, 3, function () mymainmenu:toggle() end),
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
+-- ))
 -- }}}
 
 -- {{{ Key bindings
@@ -486,6 +486,9 @@ globalkeys = gears.table.join(
   -- rofi menu
   awful.key({ modkey, "Shift" }, "r", function () awful.spawn("rofi -show drun") end,
     {description = "Show Rofi drun menu", group = "launcher"}),
+awful.key({ modkey, "Shift" }, "e", function () os.execute("/bin/bash -c '~/.myscripts/unicode'") end,
+    {description = "emoji menu", group = "launcher"}),
+
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -685,6 +688,7 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
+          "Xfce4-keyboard-settings",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -715,7 +719,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
@@ -784,9 +788,6 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Autostart Applications
--- awful.spawn.with_shell("picom")
-awful.spawn.with_shell("~/.fehbg")
 -- Autostart Applications
 -- awful.spawn.with_shell("picom")
 awful.spawn.with_shell("~/.fehbg")
