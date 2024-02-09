@@ -61,7 +61,6 @@
         <value type="string" value="audacious.desktop"/>
         <value type="string" value="com.github.wwmm.pulseeffects.desktop"/>
         <value type="string" value="discord.desktop"/>
-        <value type="string" value="appimagekit-joplin.desktop"/>
       </property>
       <property name="favorites-in-recent" type="bool" value="true"/>
       <property name="menu-width" type="int" value="605"/>
@@ -73,7 +72,6 @@
         <value type="string" value="code.desktop"/>
         <value type="string" value="kali-undercover.desktop"/>
         <value type="string" value="kali-amass.desktop"/>
-        <value type="string" value="appimagekit-joplin.desktop"/>
         <value type="string" value="cherrytree.desktop"/>
         <value type="string" value="audacious.desktop"/>
         <value type="string" value="kali-armitage.desktop"/>
