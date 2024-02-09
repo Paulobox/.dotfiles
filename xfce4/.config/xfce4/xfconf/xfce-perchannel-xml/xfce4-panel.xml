@@ -66,10 +66,11 @@
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="xfce-keyboard-settings.desktop"/>
+        <value type="string" value="code.desktop"/>
         <value type="string" value="gimp.desktop"/>
         <value type="string" value="kali-nmap.desktop"/>
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
-        <value type="string" value="code.desktop"/>
         <value type="string" value="kali-undercover.desktop"/>
         <value type="string" value="kali-amass.desktop"/>
         <value type="string" value="cherrytree.desktop"/>
