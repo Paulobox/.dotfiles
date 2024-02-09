@@ -1,6 +1,13 @@
 # ~/.zshrc file for zsh interactive shells.
 # see /usr/share/doc/zsh/examples/zshrc for examples
 
+# ssh
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_getout
+fi
+
+
 # exported paths environmental
 export PATH=$PATH:~/.myscripts
 export PATH="$PATH:/home/kali/.local/share/applications"
