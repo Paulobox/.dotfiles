@@ -1,5 +1,11 @@
 create entry /usr/share/xsessions/ dwm.desktop
 
+Debian:
+sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
+
+On Arch Linux:
+sudo pacman -S base-devel libx11 libxft libxinerama freetype2 fontconfig
+
 [Desktop Entry]
 Name=dwm
 Comment=Dynamic Window Manager
@@ -12,7 +18,8 @@ make .xinitrc in ~ directroy and add:
 exec dwm
 
 
---downloads
+--DOWNLOADS
+
 git clone https://git.suckless.org/dwm
 --window manager
           
@@ -25,5 +32,6 @@ git clone https://git.suckless.org/st
 git clone https://git.suckless.org/slstatus
 --status bar
 
+--dwm-config.h
 static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
 { 0,			        XK_Print,  spawn,	   {.v = prtscrcmd } },

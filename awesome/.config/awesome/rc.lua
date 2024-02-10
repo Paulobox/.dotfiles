@@ -11,6 +11,7 @@ local wibox = require("wibox")
 local logout = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local lain = require("lain")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -118,14 +119,15 @@ else
 end
 
 -- Awesome icon top left
--- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     -- menu = mymainmenu })
--- seperator
-tbox_seperator = wibox.widget.textbox ("ofocus")
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                     menu = mymainmenu })
+-- Seperator
+tbox_seperator = wibox.widget.textbox ("│")
+
 --keyboard emoji
 keyboard_emoji = wibox.widget.textbox ("⌨")
 
--- custom widgets
+-- custom lain widgets
 local cpu_widget = lain.widget.cpu {
   settings = function()
     widget:set_markup("CPU " .. cpu_now.usage.. "% ")
@@ -137,6 +139,29 @@ local ram_widget = lain.widget.mem {
     widget:set_markup("RAM " .. mem_now.perc.. "% ")
   end
 }
+
+local mybattery = lain.widget.bat {
+    settings = function()
+        widget:set_markup("Battery " .. bat_now.perc .. "%")
+    end
+}
+
+--calendar widget + time format
+mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
+local cw = calendar_widget({
+    theme = 'dark',
+    placement = 'top_right',
+    start_sunday = false,
+    radius = 8,
+    week_numbers = false,
+-- with customized next/previous (see table above)
+    previous_month_button = 1,
+    next_month_button = 3,
+})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -246,11 +271,6 @@ else
     })
 end
 
--- Awesome icon top left
--- mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     -- menu = mymainmenu })
--- Seperator
-tbox_seperator = wibox.widget.textbox ("│")
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -258,11 +278,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
-
-
--- {{{ Wibar
--- Create a textclock widget / time format
-mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -358,8 +373,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
+            -- mylauncher,
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -384,6 +399,8 @@ awful.screen.connect_for_each_screen(function(s)
             keyboard_emoji,
             mykeyboardlayout,
             tbox_seperator,
+            mybattery,
+            tbox_seperator,
             wibox.widget.systray(),
             mytextclock,
             tbox_seperator,
@@ -394,6 +411,7 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 -- }}}
 
+-- -- Disabling mouse scroll on desktop for scrolling through tags
 -- {{{ Mouse bindings
 -- root.buttons(gears.table.join(
     -- awful.button({ }, 3, function () mymainmenu:toggle() end),
