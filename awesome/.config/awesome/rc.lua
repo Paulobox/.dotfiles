@@ -807,6 +807,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Autostart Applications
--- awful.spawn.with_shell("picom")
 awful.spawn.with_shell("~/.fehbg")
 awful.spawn.with_shell("setxkbmap -layout 'us,gb' -option 'grp:win_space_toggle'")

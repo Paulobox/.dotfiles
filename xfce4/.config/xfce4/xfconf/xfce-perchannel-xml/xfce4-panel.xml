@@ -57,25 +57,18 @@
         <value type="string" value="thorium-browser.desktop"/>
         <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
         <value type="string" value="fish.desktop"/>
-        <value type="string" value="gimp.desktop"/>
-        <value type="string" value="audacious.desktop"/>
-        <value type="string" value="com.github.wwmm.pulseeffects.desktop"/>
-        <value type="string" value="discord.desktop"/>
       </property>
       <property name="favorites-in-recent" type="bool" value="true"/>
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
-        <value type="string" value="code.desktop"/>
+        <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
-        <value type="string" value="gimp.desktop"/>
         <value type="string" value="kali-nmap.desktop"/>
         <value type="string" value="xfce4-terminal-emulator.desktop"/>
         <value type="string" value="kali-undercover.desktop"/>
         <value type="string" value="kali-amass.desktop"/>
         <value type="string" value="cherrytree.desktop"/>
-        <value type="string" value="audacious.desktop"/>
-        <value type="string" value="kali-armitage.desktop"/>
       </property>
     </property>
     <property name="plugin-10" type="string" value="separator"/>
@@ -103,6 +96,7 @@
         <value type="string" value="chrome_status_icon_1"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="polkit-mate-authentication-agent-1"/>
         <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (74%)"/>
         <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (65%) vpn connection active"/>
         <value type="string" value="mocicon"/>

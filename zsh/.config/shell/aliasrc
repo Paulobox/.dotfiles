@@ -40,6 +40,6 @@ alias matrixlol='cmatrix | lolcat'
 alias aqua='asciiquarium'
 alias aqualol='asciiquarium | lolcat'
 alias llal='ls -la | lolcat'
-alias lsal='ls -a -CF | lolcat'
-alias lsa='ls -a -CF'
+alias lsal='ls -a'
+alias lsa='ls -a'
 alias allapps="apt-mark showmanual | xargs apt-cache show | awk '/Package:/ {printf \$2 \"----->(Version:\"} /Version:/ {print \$2\")\"}' | grep --color=always -E 'Version:|$'"

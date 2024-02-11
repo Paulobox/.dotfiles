@@ -3,6 +3,9 @@ create entry /usr/share/xsessions/ dwm.desktop
 Debian:
 sudo apt install build-essential libx11-dev libxft-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev
 
+sudo apt install libx11-dev libxinerama-dev libxft-dev libx11-xcb-dev libxcb-res0-dev
+
+
 On Arch Linux:
 sudo pacman -S base-devel libx11 libxft libxinerama freetype2 fontconfig
 
