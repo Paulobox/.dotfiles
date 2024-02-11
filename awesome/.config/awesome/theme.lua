@@ -28,10 +28,10 @@ theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(2)
+theme.useless_gap   = dpi(4)
+theme.border_width  = dpi(1)
 theme.border_normal = "#535d6c"
-theme.border_focus  = "#a60000"
+theme.border_focus  = "#005577"
 theme.border_marked = "#91231c"
 
 theme.hotkeys_modifiers_fg = "#d5ddf3"
@@ -68,8 +68,8 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_height = dpi(23)
+theme.menu_width  = dpi(120)
 
 -- You can add as many variables as
 -- you wish and access them by using

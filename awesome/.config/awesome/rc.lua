@@ -127,6 +127,8 @@ tbox_seperator = wibox.widget.textbox ("│")
 --keyboard emoji
 keyboard_emoji = wibox.widget.textbox ("⌨")
 
+nm_applet_widget = wibox.widget.systray("nm-applet")
+
 -- custom lain widgets
 local cpu_widget = lain.widget.cpu {
   settings = function()
@@ -380,6 +382,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
+            nm_applet_widget,
             tbox_seperator,
             ram_widget,
             tbox_seperator,
