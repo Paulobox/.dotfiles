@@ -508,7 +508,9 @@ globalkeys = gears.table.join(
 awful.key({ modkey, "Shift" }, "e", function () os.execute("/bin/bash -c '~/.myscripts/unicode'") end,
     {description = "Emoji menu", group = "launcher"}),
 awful.key({ modkey, "Shift" }, "t", function () awful.spawn("/usr/bin/env bash -c '~/.myscripts/cedit'") end,
-    {description = "Config Edit menu", group = "launcher"}),
+    {description = "Config Edit dmenu", group = "launcher"}),
+awful.key({ modkey, "Shift" }, "y", function () awful.spawn("/usr/bin/env bash -c '~/.myscripts/dirjump'") end,
+    {description = "Jump to directory dmenu", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
