@@ -127,8 +127,6 @@ tbox_seperator = wibox.widget.textbox ("│")
 --keyboard emoji
 keyboard_emoji = wibox.widget.textbox ("⌨")
 
-nm_applet_widget = wibox.widget.systray("nm-applet")
-
 -- custom lain widgets
 local cpu_widget = lain.widget.cpu {
   settings = function()
@@ -508,7 +506,9 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "r", function () awful.spawn("rofi -show drun") end,
     {description = "Show Rofi drun menu", group = "launcher"}),
 awful.key({ modkey, "Shift" }, "e", function () os.execute("/bin/bash -c '~/.myscripts/unicode'") end,
-    {description = "emoji menu", group = "launcher"}),
+    {description = "Emoji menu", group = "launcher"}),
+awful.key({ modkey, "Shift" }, "t", function () os.execute("/bin/bash -c '~/.myscripts/confscript'") end,
+    {description = "Config menu", group = "launcher"}),
 
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,

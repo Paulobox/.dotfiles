@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+# Aliases
+declare -A aliases=(
+    ["nvim"]=$HOME/.config/nvim/init.lua
+    ["awesome"]=$HOME/.config/awesome/rc.lua
+    ["awesome theme"]=$HOME/.config/awesome/theme.lua
+    ["fish"]=$HOME/.config/fish/config.fish
+    ["kitty"]=$HOME/.config/kitty/kitty.conf
+    ["rofi"]=$HOME/.config/rofi/config.rasi
+    ["conky"]=$HOME/.config/conky/conky.conf
+    ["nxsiv"]=$HOME/.config/nxsiv/exec/key-handler
+    ["picom"]=$HOME/.config/picom/picom.conf
+    ["zsh"]=$HOME/.zshrc
+    # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
+    # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
+    # ["bspwmrc"]=$HOME/.config/bspwm/bspwmrc
+    # ["polybar"]=$HOME/.config/polybar/config.ini
+    # ["i3"]=$HOME/.config/i3/config
+)
+
+# Function to list Lua files in plugins directory
+list_lua_plugins() {
+    plugins_dir=$HOME/.config/nvim/lua/plugins
+    find "$plugins_dir" -name '*.lua' -type f -exec basename {} \;
+}
+
+# Function to list all files in specified directory
+list_files() {
+    dir=$1
+    ls "$dir"
+}
+
+# Dmenu Format
+dmenu="dmenu -i -l 12 -fn monospace-12 -p Edit"
+
+# Editor
+editor=nvim
+
+# Terminal
+term=kitty
+
+# Items Array
+items=("${!aliases[@]}")
+items+=("Nvim plugins")
+items+=("lf file manager")
+items+=("neofetch")
+items+=("shell")
+items+=("tmux")
+items+=("dwmconfig")
+items+=("myscripts")
+
+# Main Loop
+for i in "${items[@]}"; do
+    echo "$i"
+done | $dmenu | while read -r selected; do
+    if [ "$selected" = "Nvim plugins" ]; then
+        list_lua_plugins | $dmenu | while read -r plugin; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/plugins/$plugin"
+        done
+    elif [ "$selected" = "lf file manager" ]; then
+        list_files "$HOME/.config/lf" | $dmenu | while read -r lf_file; do
+            "$term" -e "$editor" "$HOME/.config/lf/$lf_file"
+        done
+    elif [ "$selected" = "neofetch" ]; then
+        list_files "$HOME/.config/neofetch" | $dmenu | while read -r n_file; do
+            "$term" -e "$editor" "$HOME/.config/neofetch/$n_file"
+        done
+    elif [ "$selected" = "shell" ]; then
+        list_files "$HOME/.config/shell" | $dmenu | while read -r s_file; do
+            "$term" -e "$editor" "$HOME/.config/shell/$s_file"
+        done
+    elif [ "$selected" = "tmux" ]; then
+        list_files "$HOME/.config/tmux" | $dmenu | while read -r t_file; do
+            "$term" -e "$editor" "$HOME/.config/tmux/$t_file"
+        done
+    elif [ "$selected" = "dwmconfig" ]; then
+        list_files "$HOME/.config/dwmconfig" | $dmenu | while read -r dw_file; do
+            "$term" -e "$editor" "$HOME/.config/dwmconfig/$dw_file"
+        done
+    elif [ "$selected" = "myscripts" ]; then
+        list_files "$HOME/.myscripts" | $dmenu | while read -r m_file; do
+            "$term" -e "$editor" "$HOME/.myscripts//$m_file"
+        done
+    elif [ -n "${aliases[$selected]}" ]; then
+        "$term" -e "$editor" "${aliases[$selected]}"
+    fi
+done
