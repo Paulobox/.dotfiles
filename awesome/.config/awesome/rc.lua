@@ -1,4 +1,4 @@
--- If LuaRocks is installed, make sure that packages installed through it are
+ -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
@@ -507,9 +507,8 @@ globalkeys = gears.table.join(
     {description = "Show Rofi drun menu", group = "launcher"}),
 awful.key({ modkey, "Shift" }, "e", function () os.execute("/bin/bash -c '~/.myscripts/unicode'") end,
     {description = "Emoji menu", group = "launcher"}),
-awful.key({ modkey, "Shift" }, "t", function () os.execute("/bin/bash -c '~/.myscripts/confscript'") end,
-    {description = "Config menu", group = "launcher"}),
-
+awful.key({ modkey, "Shift" }, "t", function () awful.spawn("/usr/bin/env bash -c '~/.myscripts/cedit'") end,
+    {description = "Config Edit menu", group = "launcher"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
