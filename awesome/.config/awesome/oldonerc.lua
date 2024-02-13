@@ -1,4 +1,4 @@
--- If LuaRocks is installed, make sure that packages installed through it are
+ -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
@@ -13,6 +13,159 @@ local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local lain = require("lain")
+-- Theme handling library
+local beautiful = require("beautiful")
+-- Notification library
+local naughty = require("naughty")
+local menubar = require("menubar")
+local hotkeys_popup = require("awful.hotkeys_popup")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
+
+-- Load Debian menu entries
+local debian = require("debian.menu")
+local has_fdo, freedesktop = pcall(require, "freedesktop")
+
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
+
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.connect_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
+
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = tostring(err) })
+        in_error = false
+    end)
+end
+-- }}}
+
+-- {{{ Variable definitions
+-- Themes define colours, icons, font and wallpapers.
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("~/.config/awesome/theme.lua")
+
+-- This is used later as the default terminal and editor to run.
+terminal = "kitty"
+editor = os.getenv("EDITOR") or "nvim"
+editor_cmd = terminal .. " -e " .. editor
+
+-- Default modkey.
+-- Usually, Mod4 is the key with a logo between Control and Alt.
+-- If you do not like this or do not have such a key,
+-- I suggest you to remap Mod4 to another key using xmodmap or other tools.
+-- However, you can use another modifier like Mod1, but it may interact with others.
+modkey = "Mod4"
+
+-- Table of layouts to cover with awful.layout.inc, order matters.
+awful.layout.layouts = {
+    awful.layout.suit.tile,
+    awful.layout.suit.floating,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
+    --awful.layout.suit.max,
+    --awful.layout.suit.max.fullscreen,
+    --awful.layout.suit.magnifier,
+    awful.layout.suit.corner.nw,
+    -- awful.layout.suit.corner.ne,
+    -- awful.layout.suit.corner.sw,
+    -- awful.layout.suit.corner.se,
+}
+-- }}}
+
+-- {{{ Menu
+-- Create a launcher widget and a main menu
+myawesomemenu = {
+   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "restart", awesome.restart },
+   { "quit", function() awesome.quit() end },
+}
+
+local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
+local menu_terminal = { "open terminal", terminal }
+
+if has_fdo then
+    mymainmenu = freedesktop.menu.build({
+        before = { menu_awesome },
+        after =  { menu_terminal }
+    })
+else
+    mymainmenu = awful.menu({
+        items = {
+                  menu_awesome,
+                  { "Debian", debian.menu.Debian_menu.Debian },
+                  menu_terminal,
+                }
+    })
+end
+
+-- Awesome icon top left
+mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                     menu = mymainmenu })
+-- Seperator
+tbox_seperator = wibox.widget.textbox ("│")
+
+--keyboard emoji
+keyboard_emoji = wibox.widget.textbox ("⌨")
+
+-- custom lain widgets
+local cpu_widget = lain.widget.cpu {
+  settings = function()
+    widget:set_markup("CPU " .. cpu_now.usage.. "% ")
+  end
+}
+
+local ram_widget = lain.widget.mem {
+  settings = function()
+    widget:set_markup("RAM " .. mem_now.perc.. "% ")
+  end
+}
+
+local mybattery = lain.widget.bat {
+    settings = function()
+        widget:set_markup("Battery " .. bat_now.perc .. "%")
+    end
+}
+
+--calendar widget + time format
+mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
+local cw = calendar_widget({
+    theme = 'dark',
+    placement = 'top_right',
+    start_sunday = false,
+    radius = 8,
+    week_numbers = false,
+-- with customized next/previous (see table above)
+    previous_month_button = 1,
+    next_month_button = 3,
+})
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
+
+-- Widget and layout library
+local wibox = require("wibox")
+local logout = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -118,85 +271,6 @@ else
     })
 end
 
--- custom options start from here----------
--- remove borders if maximized
-client.connect_signal("property::maximized", function(c)
-    if c.maximized then
-        c.border_width = 0
-    else
-        c.border_width = beautiful.border_width
-    end
-end)
-
--- Define a global variable to track border state
-border_disabled = false
-
--- Keybinding to toggle the border
-awful.key({ modkey, "Control" }, "b", function()
-    border_disabled = not border_disabled
-    awesome.emit_signal("border_toggled")
-end)
-
--- Function to update the border width based on the global variable
-client.connect_signal("request::border_width", function(c)
-    if border_disabled then
-        c.border_width = 0
-    else
-        c.border_width = beautiful.border_width
-    end
-end)
-
--- Signal handler to update the border when toggled
-awesome.connect_signal("border_toggled", function()
-    for _, c in ipairs(client.get()) do
-        c:emit_signal("request::border_width")
-    end
-end)
-
--- Awesome icon top left
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
--- Seperator
-tbox_seperator = wibox.widget.textbox ("│")
-
---keyboard emoji
-keyboard_emoji = wibox.widget.textbox ("⌨")
-
--- custom lain widgets
-local cpu_widget = lain.widget.cpu {
-  settings = function()
-    widget:set_markup("CPU " .. cpu_now.usage.. "% ")
-  end
-}
-
-local ram_widget = lain.widget.mem {
-  settings = function()
-    widget:set_markup("RAM " .. mem_now.perc.. "% ")
-  end
-}
-
-local mybattery = lain.widget.bat {
-    settings = function()
-        widget:set_markup("Battery " .. bat_now.perc .. "%")
-    end
-}
-
---calendar widget + time format
-mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
-local cw = calendar_widget({
-    theme = 'dark',
-    placement = 'top_right',
-    start_sunday = false,
-    radius = 8,
-    week_numbers = false,
--- with customized next/previous (see table above)
-    previous_month_button = 1,
-    next_month_button = 3,
-})
-mytextclock:connect_signal("button::press",
-    function(_, _, _, button)
-        if button == 1 then cw.toggle() end
-    end)
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -205,7 +279,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -290,8 +363,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
-        -- -- rounder corners of taskilist items
+        buttons = tasklist_buttons,
         -- style   = {
         --     -- border_width = 12,
         --     -- border_color = "#777777",
@@ -380,6 +452,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
+
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -408,7 +481,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
-      -- toggle satus bar alt+b additional mysettings
+  --screenshot
+  awful.key({},            "Print",     function () awful.spawn("flameshot gui") end ),
+
+    -- additional mysettings
   -- Show/Hide Wibox
   awful.key({ modkey }, "b", function ()
     for s in screen do
@@ -420,10 +496,8 @@ globalkeys = gears.table.join(
   end,
     {description = "toggle wibox", group = "awesome"}),
 
-    --screenshot
-    awful.key({},            "Print",     function () awful.spawn("flameshot gui") end ),
 
-    -- increase decrease gap size
+  -- increase decrease gap size
   awful.key({ modkey, }, "=", function () awful.tag.incgap(1)    end,
     {description = "increase gap", group = "layout"}),
   awful.key({ modkey, }, "-", function () awful.tag.incgap(-1)    end,
@@ -433,7 +507,7 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "-", function () awful.tag.incgap(-4)    end,
     {description = "decrease gap", group = "layout"}),
 
-   -- other keybindings
+  -- other keybindings
   -- rofi menu
   awful.key({ modkey, "Shift" }, "r", function () awful.spawn("rofi -show drun") end,
     {description = "Show Rofi drun menu", group = "launcher"}),
@@ -443,7 +517,6 @@ awful.key({ modkey, "Shift" }, "t", function () awful.spawn("/usr/bin/env bash -
     {description = "Config Edit dmenu", group = "launcher"}),
 awful.key({ modkey, "Shift" }, "d", function () awful.spawn("/usr/bin/env bash -c '~/.myscripts/dirjump'") end,
     {description = "Jump to directory dmenu", group = "launcher"}),
-
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
@@ -474,13 +547,6 @@ awful.key({ modkey, "Shift" }, "d", function () awful.spawn("/usr/bin/env bash -
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- -- Disabling original awesome Prompt here
-    -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-    --           {description = "run prompt", group = "launcher"}),
-      -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-
     -- Dmenu
     awful.key({ modkey },            "r",     function ()
     awful.util.spawn("dmenu_run") end,
@@ -495,7 +561,10 @@ awful.key({ modkey, "Shift" }, "d", function () awful.spawn("/usr/bin/env bash -
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"})
+              {description = "lua execute prompt", group = "awesome"}),
+    -- Menubar
+    awful.key({ modkey }, "p", function() menubar.show() end,
+              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -542,19 +611,13 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"}),
 
       -- move floating windows with keyboard
--- awful.key({ modkey }, "Prior", function (c) c:relative_move(-20, -20,  40,  40) end),
--- awful.key({ modkey }, "Next",  function (c) c:relative_move( 20,  20, -40, -40) end),
-awful.key({ modkey }, "Next", function (c) c:relative_move(0, 0, -40, 0) end),
-awful.key({ modkey, "Shift" }, "Next", function (c) c:relative_move(0, 0, 40, 0) end),
-awful.key({ modkey }, "Prior", function (c) c:relative_move(0, 0, 0, -40) end),
-awful.key({ modkey, "Shift" }, "Prior", function (c) c:relative_move(0, 0, 0, 40) end),
+awful.key({ modkey }, "Next",  function (c) c:relative_move( 20,  20, -40, -40) end),
+awful.key({ modkey }, "Prior", function (c) c:relative_move(-20, -20,  40,  40) end),
 awful.key({ modkey }, "Down",  function (c) c:relative_move(  0,  20,   0,   0) end),
 awful.key({ modkey }, "Up",    function (c) c:relative_move(  0, -20,   0,   0) end),
 awful.key({ modkey }, "Left",  function (c) c:relative_move(-20,   0,   0,   0) end),
-awful.key({ modkey }, "Right", function (c) c:relative_move( 20,   0,   0,   0) end),
+awful.key({ modkey }, "Right", function (c) c:relative_move( 20,   0,   0,   0) end)
 
-awful.key({ modkey, "Shift" }, "y", function () awful.client.incwfact(-0.05) end),
-awful.key({ modkey, "Shift" }, "u", function () awful.client.incwfact( 0.05) end)
 )
 
 -- Bind all key numbers to tags.
@@ -640,7 +703,8 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-
+  { rule = { class = "nvim" },
+    properties = { tag = nvim, switchtotag = true } },
     -- Floating clients.
     { rule_any = {
         instance = {
@@ -692,7 +756,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
@@ -701,6 +765,16 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
+
+-- remove borders if maximized
+client.connect_signal("property::maximized", function(c)
+    if c.maximized then
+        c.border_width = 0
+    else
+        c.border_width = beautiful.border_width
+    end
+end)
+
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)

@@ -20,6 +20,7 @@ declare -A aliases=(
     ["home"]=$HOME
     ["usr/local/bin"]=/usr/local/bin/
     ["downloads"]=$HOME/Downloads/
+    ["trash"]=$HOME/.local/share/Trash/files
     # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
     # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
     # ["bspwmrc"]=$HOME/.config/bspwm/bspwmrc
