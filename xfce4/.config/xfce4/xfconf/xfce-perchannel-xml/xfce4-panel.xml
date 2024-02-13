@@ -8,8 +8,8 @@
       <property name="length" type="uint" value="100"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
-        <value type="int" value="4"/>
         <value type="int" value="5"/>
+        <value type="int" value="4"/>
         <value type="int" value="6"/>
         <value type="int" value="13"/>
         <value type="int" value="7"/>
@@ -62,6 +62,7 @@
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
+        <value type="string" value="kali-faraday-stop.desktop"/>
         <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="kali-nmap.desktop"/>
