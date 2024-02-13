@@ -17,6 +17,7 @@ declare -A aliases=(
     ["media /usb devices"]=/media/
     ["lightdm"]=/etc/lightdm/
     ["config"]=$HOME/.config
+    ["home"]=$HOME
     ["usr/local/bin"]=/usr/local/bin
     # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
     # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
