@@ -5,3 +5,6 @@ kelvin=$(echo "" | dmenu -p "Enter the desired color temperature in Kelvin:")
 
 # Set the color temperature using redshift
 redshift -m randr -PO "$kelvin"
+
+# Display a notification with the selected color temperature
+notify-send "Color temperature set" "Kelvin temperature: $kelvin K"
