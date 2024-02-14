@@ -21,6 +21,7 @@ export PATH=$PATH:~/.myscripts
 export PATH="$PATH:/home/kali/.local/share/applications"
 export FPATH="$HOME/eza/completions/zsh:$FPATH"
 export PATH="/usr/local/nvim/bin:$PATH"
+export PATH="$PATH:~/flutter/bin"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

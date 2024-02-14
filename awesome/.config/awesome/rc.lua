@@ -551,9 +551,13 @@ awful.key({ modkey, "Shift" }, "Next", function (c) c:relative_move(0, 0, 40, 0)
 awful.key({ modkey }, "Prior", function (c) c:relative_move(0, 0, 0, -40) end),
 awful.key({ modkey, "Shift" }, "Prior", function (c) c:relative_move(0, 0, 0, 40) end),
 awful.key({ modkey }, "Down",  function (c) c:relative_move(  0,  20,   0,   0) end),
+awful.key({ modkey, "Shift" }, "Down",  function (c) c:relative_move(  0,  60,   0,   0) end),
 awful.key({ modkey }, "Up",    function (c) c:relative_move(  0, -20,   0,   0) end),
+awful.key({ modkey, "Shift" }, "Up",    function (c) c:relative_move(  0, -60,   0,   0) end),
 awful.key({ modkey }, "Left",  function (c) c:relative_move(-20,   0,   0,   0) end),
+awful.key({ modkey, "Shift" }, "Left",  function (c) c:relative_move(-70,   0,   0,   0) end),
 awful.key({ modkey }, "Right", function (c) c:relative_move( 20,   0,   0,   0) end),
+awful.key({ modkey, "Shift" }, "Right", function (c) c:relative_move( 70,   0,   0,   0) end),
 
 awful.key({ modkey, "Shift" }, "y", function () awful.client.incwfact(-0.05) end),
 awful.key({ modkey, "Shift" }, "u", function () awful.client.incwfact( 0.05) end)
