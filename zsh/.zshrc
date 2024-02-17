@@ -10,8 +10,8 @@ fi
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-# Check if in ~/.dotfiles directory
-if [[ "$(pwd)" = "${HOME}/.dotfiles"* ]]; then
+# Check if in ~/.dotfiles or ~/.config/nvim directory
+if [[ "$(pwd)" = "${HOME}/.dotfiles"* || "$(pwd)" = "${HOME}/.config/nvim"* ]]; then
     # Check if SSH_AUTH_SOCK is not set or empty
     if [ -z "$SSH_AUTH_SOCK" ]; then
         eval "$(ssh-agent -s)"
