@@ -1,4 +1,0 @@
-~/.fehbg &
-picom --daemon &
-slstatus &
-exec dwm

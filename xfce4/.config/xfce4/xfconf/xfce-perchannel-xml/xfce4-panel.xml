@@ -62,7 +62,6 @@
       <property name="menu-width" type="int" value="605"/>
       <property name="position-search-alternate" type="bool" value="true"/>
       <property name="recent" type="array">
-        <value type="string" value="kali-faraday-stop.desktop"/>
         <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
         <value type="string" value="xfce-keyboard-settings.desktop"/>
         <value type="string" value="kali-nmap.desktop"/>

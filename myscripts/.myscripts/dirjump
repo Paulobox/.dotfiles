@@ -21,6 +21,7 @@ declare -A aliases=(
     ["usr/local/bin"]=/usr/local/bin/
     ["downloads"]=$HOME/Downloads/
     ["trash"]=$HOME/.local/share/Trash/files
+    ["tmux"]=$HOME/.config/tmux/
     # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
     # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
     # ["bspwmrc"]=$HOME/.config/bspwm/bspwmrc

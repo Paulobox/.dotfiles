@@ -13,7 +13,7 @@ source /usr/share/doc/fzf/examples/completion.zsh
 # ssh
 if [ -z "$SSH_AUTH_SOCK" ] ; then
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_kalidualboot
+    ssh-add ~/.ssh/id_getout
 fi
 
 # exported paths environmental ENVIROMENTAL
@@ -145,3 +145,6 @@ fi
 
 if [ -e /home/kali/.nix-profile/etc/profile.d/nix.sh ]; then . /home/kali/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 eval "$(zoxide init zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
+[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
