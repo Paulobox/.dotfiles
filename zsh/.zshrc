@@ -10,10 +10,13 @@ fi
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
-# ssh
-if [ -z "$SSH_AUTH_SOCK" ] ; then
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_getout
+# Check if in ~/.dotfiles directory
+if [[ "$(pwd)" = "${HOME}/.dotfiles"* ]]; then
+    # Check if SSH_AUTH_SOCK is not set or empty
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_getout
+    fi
 fi
 
 # exported paths environmental ENVIROMENTAL
@@ -34,6 +37,12 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Check if we are in tmux
+if [ ! -z "$TMUX" ]; then
+    # Deactivate Powerlevel10k theme within tmux
+    ZSH_THEME="refined"
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

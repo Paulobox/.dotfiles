@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Prompt the user to enter the desired color temperature in Kelvin using dmenu
-kelvin=$(echo "" | dmenu -p "Enter the desired color temperature in Kelvin:")
+kelvin=$(echo "" | dmenu -p "Enter the desired color temperature in Kelvin (min-1000 and max-25,000):")
 
 # Set the color temperature using redshift
 redshift -m randr -PO "$kelvin"

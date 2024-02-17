@@ -46,9 +46,11 @@ items+=("tmux")
 items+=("dwmconfig")
 items+=("myscripts")
 items+=("Nvim plugins")
+items+=("Nvim keymaps")
 items+=("conky")
 items+=("lightdm")
 items+=("alacritty")
+items+=("moc")
 
 # Main Loop
 for i in "${items[@]}"; do
@@ -57,6 +59,10 @@ done | $dmenu | while read -r selected; do
     if [ "$selected" = "Nvim plugins" ]; then
         list_files "$HOME/.config/nvim/lua/plugins/" | $dmenu | while read -r lp_file; do
             "$term" -e "$editor" "$HOME/.config/nvim/lua/plugins/$lp_file"
+        done
+    elif [ "$selected" = "Nvim keymaps" ]; then
+        list_files "$HOME/.config/nvim/lua/core/" | $dmenu | while read -r co_file; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/core/$co_file"
         done
     elif [ "$selected" = "lf file manager" ]; then
         list_files "$HOME/.config/lf" | $dmenu | while read -r lf_file; do
@@ -93,6 +99,10 @@ done | $dmenu | while read -r selected; do
     elif [ "$selected" = "alacritty" ]; then
         list_files "$HOME/.config/alacritty/" | $dmenu | while read -r ac_file; do
             "$term" -e "$editor" "$HOME/.config/alacritty/$ac_file"
+        done
+    elif [ "$selected" = "moc" ]; then
+        list_files "$HOME/.moc/" | $dmenu | while read -r mc_file; do
+            "$term" -e "$editor" "$HOME/.moc/$mc_file"
         done
     elif [ -n "${aliases[$selected]}" ]; then
         "$term" -e "$editor" "${aliases[$selected]}"
