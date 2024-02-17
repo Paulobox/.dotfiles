@@ -1,0 +1,2 @@
+#!/bin/bash
+redshift -m randr -PO 4600
