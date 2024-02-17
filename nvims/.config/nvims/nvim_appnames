@@ -1,8 +1,7 @@
 #!/bin/bash
 # NVIM_APPNAME aliases
-alias nvim-paulo="NVIM_APPNAME=paulo nvim"
-alias nvim-astro="NVIM_APPNAME=astro nvim"
 alias nvim-nvchad="NVIM_APPNAME=nvchad nvim"
+alias nvim-astro="NVIM_APPNAME=astro nvim"
 alias nvim-prime="NVIM_APPNAME=prime nvim"
 alias nvim-kickstart="NVIM_APPNAME=kickstart nvim"
 alias nvim-asyncedd="NVIM_APPNAME=asyncedd nvim"

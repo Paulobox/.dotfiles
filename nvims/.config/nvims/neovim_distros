@@ -2,13 +2,12 @@
 # Define Neovim applications you want to experiment with.
 
 # The repository cloned must bootstrap itself.  In otherwords, clone and nvim
-# is all tha tis needed.
+# is all that is needed.
 #
 # alias      | Github repository       | default or branch name
 readonly neovim_distros=(
-  "paulo     | paulo/paulo             | default"
-  "astro     | AstroNvim/AstroNvim     | default"
   "nvchad    | NvChad/NvChad           | default"
+  "astro     | AstroNvim/AstroNvim     | default"
   "prime     | Traap/init.lua          | default"
   "kickstart | nvim-lua/kickstart.nvim | default"
   "default   | none                    | none"
