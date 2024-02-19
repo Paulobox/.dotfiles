@@ -18,7 +18,7 @@ theme.font          = "Sans 8"
 
 theme.hotkeys_modifiers_fg = "#000000"
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#005577"  --alternative= #414141
+theme.bg_focus      = "#414141"  --alternative= #414141
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -72,7 +72,7 @@ theme.notification_font          = "Sans 9"
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(23)
-theme.menu_width  = dpi(120)
+theme.menu_width  = dpi(149)
 
 -- You can add as many variables as
 -- you wish and access them by using
