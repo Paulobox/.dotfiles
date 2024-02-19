@@ -44,6 +44,12 @@ if [ ! -z "$TMUX" ]; then
     ZSH_THEME="refined"
 fi
 
+# Check if we are in st terminal
+if xprop -id $(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}') WM_CLASS | grep -q '"st"'; then
+    # Deactivate Powerlevel10k theme within st terminal
+    ZSH_THEME="simple"
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/

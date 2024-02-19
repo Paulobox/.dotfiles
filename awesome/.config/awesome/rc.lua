@@ -128,31 +128,6 @@ client.connect_signal("property::maximized", function(c)
     end
 end)
 
--- Define a global variable to track border state
-border_disabled = false
-
--- Keybinding to toggle the border
-awful.key({ modkey, "Control" }, "b", function()
-    border_disabled = not border_disabled
-    awesome.emit_signal("border_toggled")
-end)
-
--- Function to update the border width based on the global variable
-client.connect_signal("request::border_width", function(c)
-    if border_disabled then
-        c.border_width = 0
-    else
-        c.border_width = beautiful.border_width
-    end
-end)
-
--- Signal handler to update the border when toggled
-awesome.connect_signal("border_toggled", function()
-    for _, c in ipairs(client.get()) do
-        c:emit_signal("request::border_width")
-    end
-end)
-
 -- Awesome icon top left
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -354,6 +329,33 @@ end)
 -- ))
 -- }}}
 
+--border_width toggle for current tab function modkey+shift+b
+local xresources = require("beautiful.xresources")
+dpi = xresources.apply_dpi
+local function toggle_border_width()
+    local t = awful.screen.focused().selected_tag
+    if t then
+        for _, c in ipairs(t:clients()) do
+            if c.border_width == 0 then
+                c.border_width = beautiful.border_width or dpi(1)
+            else
+                c.border_width = dpi(0)
+            end
+        end
+    end
+end
+
+----toggle border_width for all tags
+--local function toggle_border_width()
+--    for _, c in ipairs(client.get()) do
+--        if c.border_width == 0 then
+--            c.border_width = beautiful.border_width or dpi(1)
+--        else
+--            c.border_width = dpi(0)
+--        end
+--    end
+--end
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -446,6 +448,10 @@ awful.key({ modkey, "Shift" }, "t", function () awful.spawn("/usr/bin/env bash -
 awful.key({ modkey, "Shift" }, "d", function () awful.spawn("/usr/bin/env bash -c '~/.myscripts/dirjump'") end,
     {description = "Jump to directory dmenu", group = "launcher"}),
 
+--toggle border_width
+awful.key({ modkey, "Shift" }, "b", function()
+    toggle_border_width()
+end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
