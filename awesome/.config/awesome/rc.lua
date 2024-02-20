@@ -329,7 +329,7 @@ end)
 -- ))
 -- }}}
 
---border_width toggle for current tab function modkey+shift+b
+--toggle border width for current tag only, function modkey+shift+b
 local xresources = require("beautiful.xresources")
 dpi = xresources.apply_dpi
 local function toggle_border_width()
