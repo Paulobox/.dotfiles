@@ -176,3 +176,5 @@ eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
+
+if [ -e /home/debian/.nix-profile/etc/profile.d/nix.sh ]; then . /home/debian/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

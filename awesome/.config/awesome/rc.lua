@@ -288,7 +288,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            nm_applet_widget,
+            -- nm_applet_widget,
             tbox_seperator,
             ram_widget,
             tbox_seperator,
@@ -310,9 +310,9 @@ awful.screen.connect_for_each_screen(function(s)
             tbox_seperator,
             mybattery,
             tbox_seperator,
-            wibox.widget.systray(),
             mytextclock,
             tbox_seperator,
+            wibox.widget.systray(),
             logout(),
             s.mylayoutbox,
         },
@@ -766,4 +766,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Autostart Applications
 awful.spawn.with_shell("sleep 0.5 && ~/.fehbg")
 awful.spawn.with_shell("setxkbmap -layout 'us,gb' -option 'grp:win_space_toggle'")
-awful.spawn.with_shell("sleep 5 && picom --daemon")
+-- awful.spawn.with_shell("sleep 1 && flameshot")
+-- awful.spawn.with_shell("sleep 2 && nm-applet")
+-- awful.spawn.with_shell("sleep 5 && picom --daemon")
