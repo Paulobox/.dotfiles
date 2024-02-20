@@ -1,1 +1,1 @@
-/home/kali/.fzf/shell/key-bindings.fish
+/home/debian/.fzf/shell/key-bindings.fish

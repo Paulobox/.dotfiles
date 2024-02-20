@@ -26,6 +26,19 @@ export FPATH="$HOME/eza/completions/zsh:$FPATH"
 export PATH="/usr/local/nvim/nvim-linux64/bin:$PATH"
 export PATH="$PATH:~/flutter/bin"
 
+#replace apt with nala
+apt() { 
+  command nala "$@"
+}
+sudo() {
+  if [ "$1" = "apt" ]; then
+    shift
+    command sudo nala "$@"
+  else
+    command sudo "$@"
+  fi
+}
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -36,7 +49,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="agnoster"
 
 # Check if we are in tmux
 if [ ! -z "$TMUX" ]; then
