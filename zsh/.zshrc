@@ -20,10 +20,10 @@ if [[ "$(pwd)" = "${HOME}/.dotfiles"* || "$(pwd)" = "${HOME}/.config/nvim"* ]]; 
 fi
 
 # exported paths environmental ENVIROMENTAL
-export PATH=$PATH:~/.myscripts
+export PATH="$HOME/.myscripts:$PATH"
 export PATH="$PATH:/home/kali/.local/share/applications"
 export FPATH="$HOME/eza/completions/zsh:$FPATH"
-export PATH="/usr/local/nvim/bin:$PATH"
+export PATH="/usr/local/nvim/nvim-linux64/bin:$PATH"
 export PATH="$PATH:~/flutter/bin"
 
 # If you come from bash you might have to change your $PATH.

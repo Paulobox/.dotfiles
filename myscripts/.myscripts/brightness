@@ -1,12 +1,10 @@
 #!/bin/bash
 
-# Get current brightness level
-current_brightness=$(xrandr --verbose | grep -i brightness | awk '{print $2}')
+# Prompt the user to enter the desired brightness
+brightness=$(echo "" | dmenu -p "Enter the desired brightness(min-1 and max-100):")
 
-# Calculate new brightness level
-new_brightness=$1
+# Set the color temperature using redshift
+light -S "$brightness"
 
-# Set brightness level
-xrandr --output eDP-1 --brightness $new_brightness
-
-# Display the new brightness level
+# Display a notification
+notify-send "brightness was set to:" "$brightness %"
