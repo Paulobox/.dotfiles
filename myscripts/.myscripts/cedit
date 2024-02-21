@@ -2,7 +2,7 @@
 
 # Aliases
 declare -A aliases=(
-    ["nvim"]=$HOME/.config/nvim/init.lua
+    ["nvim init.lua"]=$HOME/.config/nvim/init.lua
     ["awesome rc.lua"]=$HOME/.config/awesome/rc.lua
     ["awesome theme.lua"]=$HOME/.config/awesome/theme.lua
     ["fish"]=$HOME/.config/fish/config.fish
@@ -46,7 +46,8 @@ items+=("tmux")
 items+=("dwmconfig")
 items+=("myscripts")
 items+=("Nvim plugins")
-items+=("Nvim keymaps")
+items+=("Nvim core")
+items+=("Nvim lsp")
 items+=("conky")
 items+=("lightdm")
 items+=("alacritty")
@@ -60,9 +61,13 @@ done | $dmenu | while read -r selected; do
         list_files "$HOME/.config/nvim/lua/plugins/" | $dmenu | while read -r lp_file; do
             "$term" -e "$editor" "$HOME/.config/nvim/lua/plugins/$lp_file"
         done
-    elif [ "$selected" = "Nvim keymaps" ]; then
+    elif [ "$selected" = "Nvim core" ]; then
         list_files "$HOME/.config/nvim/lua/core/" | $dmenu | while read -r co_file; do
             "$term" -e "$editor" "$HOME/.config/nvim/lua/core/$co_file"
+        done
+    elif [ "$selected" = "Nvim lsp" ]; then
+        list_files "$HOME/.config/nvim/lua/lsp/" | $dmenu | while read -r ls_file; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/lsp/$ls_file"
         done
     elif [ "$selected" = "lf file manager" ]; then
         list_files "$HOME/.config/lf" | $dmenu | while read -r lf_file; do
