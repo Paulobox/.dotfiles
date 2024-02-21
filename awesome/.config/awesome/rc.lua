@@ -438,6 +438,15 @@ globalkeys = gears.table.join(
     {description = "decrease gap", group = "layout"}),
 
    -- other keybindings
+
+  -- volume
+  awful.key({}, "XF86MonBrightnessUp", function () brightness_widget:inc() end, {description = "Increase brightness", group = "custom"}),
+  awful.key({}, "XF86MonBrightnessDown", function () brightness_widget:dec() end, {description = "Decrease brightness", group = "custom"}),
+  awful.key({}, "XF86AudioRaiseVolume", function() volume_widget.inc() end),
+  awful.key({}, "XF86AudioLowerVolume", function() volume_widget.dec() end),
+  awful.key({}, "XF86AudioMute", function() volume_widget.toggle() end),
+
+
   -- rofi menu
   awful.key({ modkey, "Shift" }, "r", function () awful.spawn("rofi -show drun") end,
     {description = "Show Rofi drun menu", group = "launcher"}),

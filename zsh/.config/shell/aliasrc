@@ -27,6 +27,7 @@ alias nvim-astro="NVIM_APPNAME=astro nvim"
 
 
 # some more ls aliases
+alias path="echo $PATH | tr ':' '\n'"
 alias list='eza --long --header -g --icons'
 alias leza='eza --long --header -g --icons'
 alias lezat='eza --long --header -g --icons --tree --level=2 -a'
