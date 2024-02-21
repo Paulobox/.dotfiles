@@ -54,7 +54,7 @@ ZSH_THEME="agnoster"
 # Check if we are in tmux
 if [ ! -z "$TMUX" ]; then
     # Deactivate Powerlevel10k theme within tmux
-    ZSH_THEME="refined"
+    ZSH_THEME="simple"
 fi
 
 # Check if we are in st terminal
