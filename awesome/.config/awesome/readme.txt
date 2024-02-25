@@ -9,3 +9,13 @@ light -N 1
 git clone https://github.com/streetturtle/awesome-wm-widgets
 git clone https://github.com/lcpz/lain
 
+
+enable mouse scroll
+sudo apt install xinput
+
+//Terminal//
+xinput list choose your mouse mine is id=10
+↳ Logitech G305  id=10	[slave  pointer  (2)]
+
+finally:
+xinput set-prop 10 "libinput Scroll Method Enabled" 0, 0, 1
