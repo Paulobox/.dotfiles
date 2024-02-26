@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Find the ID of the Logitech G305 mouse
+mouse_id=$(xinput list | grep "Logitech G305" | grep "pointer" | grep -o 'id=[0-9]*' | awk -F= '{print $2}')
+
+# Check if mouse_id is not empty
+if [ -n "$mouse_id" ]; then
+    echo "Found Logitech G305 mouse with ID: $mouse_id"
+    # Enable scrolling for the mouse
+    xinput set-prop $mouse_id "libinput Scroll Method Enabled" 0, 0, 1
+    echo "Scrolling enabled for Logitech G305 mouse."
+else
+    echo "Logitech G305 mouse not found or no slave pointer found."
+fi

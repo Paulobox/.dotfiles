@@ -2,7 +2,7 @@ configuration {
   display-drun: "Applications:";
   display-window: "Windows:";
   drun-display-format: "{name}";
-  font: "CodeNewRoman Nerd Font Medium 12";
+  font: "Hack Nerd Font Mono 12";
   
   // enabling the icons
   show-icons: true;
@@ -12,9 +12,9 @@ configuration {
 @theme "/dev/null"
 
 * {
-  bg: #1e1e2e66;
-  bg-alt: #585b7066;
-  bg-selected: #31324466;
+  bg: #21212166;
+  bg-alt: #00000066;
+  bg-selected: #ffffff66;
 
   fg: #cdd6f4;
   fg-alt: #7f849c;
@@ -49,7 +49,7 @@ element-text {
 }
 
 element-icon {
-  size: 14;
+  size: 25;
   padding: 0 10 0 0;
   background-color: transparent;
 }
