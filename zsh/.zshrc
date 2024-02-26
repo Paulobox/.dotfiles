@@ -6,7 +6,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load aliases and shortcuts if existent.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
@@ -153,6 +152,52 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias lfd='ranger'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias diff='diff --color=auto'
+alias ip='ip --color=auto'
+alias c='clear'
+
+# force zsh to show the complete history
+alias history="history 0"
+
+# nvims aliases 
+alias v='nvim'
+alias vim='nvim'
+alias n='nvim'
+alias p="NVIM_APPNAME=paulo nvim"
+alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
+alias nvim-prime="NVIM_APPNAME=prime nvim"
+alias nvim-chad="NVIM_APPNAME=nvchad nvim"
+alias chad="NVIM_APPNAME=nvchad nvim"
+alias nvim-astro="NVIM_APPNAME=astro nvim"
+# alias nvim-kick="NVIM_APPNAME=kickstart nvim"
+
+# some more ls aliases
+alias path="echo $PATH | tr ':' '\n'"
+alias list='eza --long --header -g --icons'
+alias leza='eza --long --header -g --icons'
+alias ll='eza --long --header -g --icons -a'
+alias lezat='eza --long --header -g --icons --tree --level=2 -a'
+alias la='ls -A'
+alias l='ls -CF'
+alias lla='ls -la'
+alias tspreed='tspreed -k'
+alias lol='ls -A | lolcat'
+alias matrixlol='cmatrix | lolcat'
+alias aqua='asciiquarium'
+alias aqualol='asciiquarium | lolcat'
+alias llal='ls -la | lolcat'
+alias lsal='ls -a'
+alias lsa='ls -a'
+alias allapps="apt-mark showmanual | xargs apt-cache show | awk '/Package:/ {printf \$2 \"----->(Version:\"} /Version:/ {print \$2\")\"}' | grep --color=always -E 'Version:|$'"
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
