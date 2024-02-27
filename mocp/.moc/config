@@ -71,7 +71,7 @@
 #
 # Example:    MusicDir = "/home/joe/music"
 #
-MusicDir = /home/kali/Music
+MusicDir = /home/debian/Music
 
 # Start in the music directory by default?  If set to 'no', start
 # in the directory being viewed when the was client last active or,
@@ -235,7 +235,7 @@ Softmixer_SaveState = yes
 #
 # Example:    Theme = laras_theme
 #
-Theme = orpheus
+Theme = ohybrid-bright
 
 # The theme used when running on an xterm.
 #
@@ -311,14 +311,14 @@ Theme = orpheus
 #             Fastdir3 = /mp3/rap
 #             Fastdir4 = /mp3/etc
 #
-Fastdir1 = /home/kali/Music/bones_all_music
-Fastdir2 = /home/kali/Music/chill
-Fastdir3 = /home/kali/Music/chill_nsfv
-Fastdir4 = /home/kali/Music/dubstep
-Fastdir5 = /home/kali/Music/mixed_MUSIC
-Fastdir6 = /home/kali/Music/motivational
-Fastdir7 = /home/kali/Music/old_music
-Fastdir8 = /home/kali/Music/phonk_drift_music
+Fastdir1 = "/home/debian/Music/bones_all_music"
+Fastdir2 = "/home/debian/Music/chill"
+Fastdir3 = "/home/debian/Music/chill_nsfv"
+Fastdir4 = "/home/debian/Music/dubstep"
+Fastdir5 = "/home/debian/Music/mixed_MUSIC"
+Fastdir6 = "/home/debian/Music/motivational"
+Fastdir7 = "/home/debian/Music/old_music"
+Fastdir8 = "/home/debian/Music/phonk_drift_music"
 #Fastdir9 =
 #Fastdir10 =
 
