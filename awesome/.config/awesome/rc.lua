@@ -157,7 +157,7 @@ local mybattery = lain.widget.bat {
 }
 
 --calendar widget + time format
-mytextclock = wibox.widget.textclock("%a, %d %B │ %H:%M ")
+mytextclock = wibox.widget.textclock(" %d %B, %a │ %H:%M ")
 local cw = calendar_widget({
     theme = 'dark',
     placement = 'top_right',

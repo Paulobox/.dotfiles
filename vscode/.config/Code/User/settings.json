@@ -102,5 +102,8 @@
   "editor.minimap.enabled": false,
   "files.autoSave": "afterDelay",
   "python.defaultInterpreterPath": "C:\\Python312\\python.exe",
-  "window.menuBarVisibility": "toggle"
+  "window.menuBarVisibility": "toggle",
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
 }
