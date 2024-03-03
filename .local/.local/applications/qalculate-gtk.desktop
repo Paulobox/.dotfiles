@@ -1,15 +1,8 @@
 [Desktop Entry]
-Version=1.0
-Name=Qalculate!
-GenericName=Calculator
-Comment=Powerful and easy to use calculator
-TryExec=/home/debian/.local/bin/qalculate
-Exec=/home/debian/.local/bin/qalculate
-Icon=qalculate
+Name=Qalculate
+Exec=/usr/bin/qalculate
+Icon=/home/debian/.local/share/icons/qalculate.svg
 Terminal=false
 Type=Application
-StartupNotify=true
 StartupWMClass=qalculate
 Categories=GTK;Utility;Calculator;Science;Math;
-Keywords=calculation;arithmetic;scientific;financial;
-

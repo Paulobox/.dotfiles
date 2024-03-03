@@ -670,6 +670,8 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
+          "Brave",
+          "Kodi",
           "Mousepad",
           "qterminal",
           "Arandr",
