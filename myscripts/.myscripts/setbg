@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Script to set the wallpaper
+# Uses feh
+
+# Location of the current wallpaper
+WALLPAPER_LOCATION=${XDG_DATA_HOME:-$HOME/.local/share}/mywallpaper
+
+# If image is passed, set it as wallpaper
+if [ $# -gt 0 ]; then
+    # Check if file passed is an image, return an error otherwise 
+    case "$(file --mime-type -b "$1")" in
+        image/* ) echo "Setting wallpaper..." && cp "$1" "$WALLPAPER_LOCATION" ;;
+        *) echo "Not a valid image or directory." ; exit 1;;
+    esac
+fi
+
+# Set wallpaper using feh
+feh --bg-fill "$WALLPAPER_LOCATION"

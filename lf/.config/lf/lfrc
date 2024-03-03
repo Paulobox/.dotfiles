@@ -69,20 +69,21 @@ map dd trash
 map dr restore_trash
 map p paste
 map x cut
-map y copy
+map yy copy
 map <enter> open
 map R reload
 map mf mkfile
 map md mkdir
-map bg setwallpaper
+map sbg setwallpaper
 map C clear
 
 # Movement
-map gD cd ~/documents
-map gd cd ~/downloads
-map gp cd ~/pictures
+map gD cd ~/Documents
+map gd cd ~/Downloads
+map gp cd ~/Pictures
 map gc cd ~/.config
 map gr cd ~/repos
-map gv cd ~/videos
-map gs cd ~/.local/bin
+map gv cd ~/Videos
+map gs cd ~/.myscripts
+map gb cd /usr/local/bin
 map gt cd ~/.local/share/Trash/files
