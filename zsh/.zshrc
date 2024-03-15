@@ -24,6 +24,8 @@ export PATH="$PATH:/home/kali/.local/share/applications"
 export FPATH="$HOME/eza/completions/zsh:$FPATH"
 export PATH="/usr/local/nvim/nvim-linux64/bin:$PATH"
 export PATH="$PATH:~/flutter/bin"
+export PATH="/snap/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 #replace apt with nala
 apt() { 

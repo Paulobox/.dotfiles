@@ -7,19 +7,19 @@ configuration {
   // enabling the icons
   show-icons: true;
   icon-theme: "Papirus";
+  modi: "window,run,ssh,calc,power-menu:~/.local/bin/rofi-power-menu";
 }
-
 @theme "/dev/null"
 
 * {
   bg: #21212166;
   bg-alt: #00000066;
   bg-selected: #ffffff66;
+  messagebg: #212121;
 
   fg: #cdd6f4;
   fg-alt: #7f849c;
 
-  
   border: 0;
   margin: 0;
   padding: 0;
@@ -72,8 +72,16 @@ listview {
 }
 
 mainbox {
-  children: [inputbar, listview];
-  background-color: @bg;
+  children: [inputbar, message, listview];
+  background-color: @messagebg;
+}
+
+message {
+    background-color: @bg;
+    border-color: @messagebg;
+    // border:  0px 2px 2px 2px;
+    // border-radius: 10px;
+    // padding: 5;
 }
 
 prompt {

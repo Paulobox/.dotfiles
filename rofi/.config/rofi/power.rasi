@@ -1,7 +1,11 @@
+mainbox {
+    children: [inputbar, message, listview];
+}
+
 inputbar {
-  children: [entry];
+    children: [entry];
 }
 
 listview {
-	lines: 6;
+    lines: 6;
 }

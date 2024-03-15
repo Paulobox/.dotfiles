@@ -313,13 +313,13 @@ Theme = ohybrid-bright
 #
 Fastdir1 = "/home/debian/Music/dubstep"
 Fastdir2 = "/home/debian/Music/motivational"
-Fastdir3 = "/home/debian/Music/chill"
-Fastdir4 = "/home/debian/Music/bones_all_music"
+Fastdir3 = "/home/debian/Music/phonk_drift_music"
+Fastdir4 = "/home/debian/Music/chill"
 Fastdir5 = "/home/debian/Music/chill_nsfv"
-Fastdir6 = "/home/debian/Music/mixed_MUSIC"
-Fastdir7 = "/home/debian/Music/old_music"
-Fastdir8 = "/home/debian/Music/phonk_drift_music"
-#Fastdir9 =
+Fastdir6 = "/home/debian/Music/bones_all_music"
+Fastdir7 = "/home/debian/Music/mixed_MUSIC"
+Fastdir8 = "/home/debian/Music/old_music"
+Fastdir9 = "/home/debian/Music/drill_music"
 #Fastdir10 =
 
 # How fast to seek (in number of seconds per keystroke).  The first

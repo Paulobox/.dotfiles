@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "Enter the starting IP address (example 192.168.1.0):"
+read FirstIP
+
+echo "Enter the last octet of the last IP address (example 255):"
+read LastOctetIP
+
+echo "Enter the port number you want to scan (example 3306):"
+read port
+
+# Construct the full IP address range
+IPRange="${FirstIP%.*}.0-$LastOctetIP"
+
+# Run nmap scan and filter the results for open ports
+nmap -sT $IPRange -p $port >/dev/null -oG MySQLscan
+
+# Extract the relevant information and display it
+cat MySQLscan | grep "Host:\|open" | sed 's/.*Host: \([^ ]*\).*Ports: \([^/]*\).*/Host: \1\tPorts: \2/'
+
+# Clean up temporary files by shredding them
+shred -u -z -n 3 MySQLscan
