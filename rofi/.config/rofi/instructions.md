@@ -30,6 +30,11 @@ add to your window manager daemon mine is awesomewm so i added this line to rc.l
 -- Autostart Applications
 awful.spawn.with_shell("clipmenud")
 
+POWERMENU
+cd ~/.local/bin
+downloadfor rofi:
+https://github.com/jluttine/rofi-power-menu/blob/master/rofi-power-menu
+
 
 
 //////////////////////////////////////////////////////
