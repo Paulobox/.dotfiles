@@ -5,8 +5,7 @@
   "terminal.integrated.fontFamily": "CodeNewRoman Nerd Font Mono",
   "terminal.integrated.fontSize": 12,
   "workbench.iconTheme": "vscode-icons",
-  "editor.fontFamily": "MesloLGL Nerd Font Mono, 'Courier New', monospace",
-  "editor.fontSize": 13,
+  "editor.fontFamily": "Hack Nerd Font Mono, Menlo, Consolas, DejaVu Sans Mono, monospace",
   "explorer.confirmDelete": false,
 
   // Fixed comment syntax
@@ -108,5 +107,6 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  }
+  },
+  "workbench.colorTheme": "One Dark Theme"
 }

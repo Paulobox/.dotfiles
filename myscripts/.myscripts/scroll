@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Check if the Logitech G305 mouse is connected
-if xinput list | grep -q "Logitech USB Receiver"; then
-    # Find the ID of the Logitech G305 mouse
-    xinput set-prop "Logitech USB Receiver" "libinput Scroll Method Enabled" 0, 0, 1
+# Check if the Logitech mouse is connected
+if xinput list | grep -q "Logitech"; then
+    # Find the ID of the Logitech mouse
+    xinput set-prop "Logitech" "libinput Scroll Method Enabled" 0, 0, 1
     notify-send "Scrolling enabled for Logitech mouse."
 else
     notify-send "Logitech mouse not found or no slave pointer found."

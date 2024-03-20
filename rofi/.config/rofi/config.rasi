@@ -7,7 +7,7 @@ configuration {
   // enabling the icons
   show-icons: true;
   icon-theme: "Papirus";
-  modi: "window,run,ssh,calc,power-menu:~/.local/bin/rofi-power-menu";
+  modi: "run,window,ssh,calc,power-menu:~/.local/bin/rofi-power-menu";
 }
 @theme "/dev/null"
 

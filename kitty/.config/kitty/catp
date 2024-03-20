@@ -1,15 +1,3 @@
-# Fonts
-font_family      Maple Mono Regular
-bold_font        Maple Mono Bold
-italic_font      Maple Mono Italic
-bold_italic_font Maple Mono BoldItalic
-
-font_size 12.0
-
-enable_audio_bell no
-window_padding_width 10
-confirm_os_window_close 0
-
 # The basic colors
 foreground              #CDD6F4
 background              #1E1E2E
@@ -80,7 +68,3 @@ color14 #94E2D5
 # white
 color7  #BAC2DE
 color15 #A6ADC8
-
-linux_display_server x11
-
-map super+shift+enter       new_os_window_with_cwd

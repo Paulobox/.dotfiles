@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Ask the user for the number of seconds using rofi
+seconds=$(rofi -dmenu -p 'Number of seconds')
+
+# If the user cancels or enters 0 seconds, exit with code 2
+if [ -z "$seconds" ] || [ "$seconds" -eq 0 ]; then
+    exit 2
+fi
+
+# Ask the user for the message using rofi
+message=$(rofi -dmenu -p 'Message')
+
+# If the user cancels the message input, exit with code 2
+if [ -z "$message" ]; then
+    exit 2
+fi
+
+# Set the path to your mp3 file
+mp3_path="$HOME/Music/dubstep/root.mp3"
+
+# Start a background process to sleep for the specified number of seconds
+(sleep "$seconds" && notify-send --urgency=critical "Time's up!" "$message" && mpv --volume=30 "$mp3_path") &
+
+# Send the notification that the timer has been set
+notify-send "Timer set for $seconds seconds" "$message"
