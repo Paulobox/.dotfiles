@@ -1,0 +1,131 @@
+// Place your key bindings in this file to override the defaults
+[
+  // Terminal
+  {
+    "key": "meta+alt+c",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "meta+alt+enter",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+   {
+    "key": "alt+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+    {
+    "key": "alt+h",
+    "command": "workbench.action.terminal.focuspreviouspane",
+    "when": "terminalfocus && terminalprocesssupported"
+  },
+   // NAVIGATION
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeGroup"
+  },
+  {
+    "key": "ctrl+meta+t",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+meta+a",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+meta+b",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "alt+meta+j",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+meta+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+meta+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  // Move active editor left or right (useful for full-stack web dev).
+  {
+    "key": "ctrl+alt+h",
+    "command": "moveActiveEditor",
+    "args": {
+      "to": "left"
+    }
+  },
+  {
+    "key": "ctrl+alt+l",
+    "command": "moveActiveEditor",
+    "args": {
+      "to": "right"
+    }
+  },
+  // FILE TREE
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
+  },
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "command": "renameFile",
+    "key": "r",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "meta+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "win+meta+n",
+    "command": "workbench.action.newWindow",
+    "when": "!explorerViewletFocus"
+  },
+  {
+    "command": "deleteFile",
+    "key": "d",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  // Traverse VSCode IntelliSense suggestions with vim keybindings.
+  {
+    "key": "win+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "win+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  // EXTRA
+  {
+    "key": "ctrl+meta+5",
+    "command": "editor.emmet.action.matchTag"
+  },
+  {
+    "key": "meta+f11",
+    "command": "workbench.action.toggleZenMode"
+  }
+  {
+    "key": "ctrl+meta+f11",
+    "command": "workbench.action.toggleMenuBar"
+  }
+]

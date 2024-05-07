@@ -1,0 +1,4 @@
+#!/bin/bash
+notify-send "System Uptime" "$(uptime -s) $(uptime)" -t 4000
+
+

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Aliases
+declare -A aliases=(
+    ["nvim"]=$HOME/.config/nvim/
+    ["awesome"]=$HOME/.config/awesome/
+    ["dotfiles"]=$HOME/.dotfiles/
+    ["fish"]=$HOME/.config/fish/
+    ["kitty"]=$HOME/.config/kitty/
+    ["rofi"]=$HOME/.config/rofi/
+    ["nxsiv"]=$HOME/.config/nxsiv/exec/
+    ["picom"]=$HOME/.config/picom/
+    ["zsh"]=$HOME/
+    ["myscripts"]=$HOME/.myscripts/
+    ["dwmconfig"]=$HOME/.config/dwmconfig/
+    ["conky"]=$HOME/.config/conky/
+    ["media /usb devices"]=/media/
+    ["lightdm"]=/etc/lightdm/
+    ["config"]=$HOME/.config/
+    ["home"]=$HOME
+    ["usr/local/bin"]=/usr/local/bin/
+    ["downloads"]=$HOME/Downloads/
+    ["trash"]=$HOME/.local/share/Trash/files
+    ["tmux"]=$HOME/.config/tmux/
+    ["music"]=$HOME/Music/
+    ["Pictures"]=$HOME/Pictures/
+    ["Wallpapers"]=$HOME/Pictures/wallpapers/
+    # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
+    # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
+    # ["bspwmrc"]=$HOME/.config/bspwm/bspwmrc
+    # ["polybar"]=$HOME/.config/polybar/config.ini
+    # ["i3"]=$HOME/.config/i3/config
+)
+
+# Filemanager
+filemgr=thunar
+
+# Terminal
+term=kitty
+
+# Dmenu Format
+dmenu_cmd="dmenu -i -l 12 -fn monospace-12 -p Jump_to_directory:"
+
+# Select directory using dmenu
+selected_alias=$(printf '%s\n' "${!aliases[@]}" | $dmenu_cmd)
+selected_path="${aliases[$selected_alias]}"
+
+# Check if selected path is a directory
+if [ -d "$selected_path" ]; then
+    if [ "$selected_alias" = "dotfiles" ]; then
+        # Open directory using Thunar
+        $filemgr "$selected_path" &
+        # Open new terminal instance in the dotfiles directory
+        $term --directory="$selected_path" &
+    else
+        # Open directory using Thunar
+        $filemgr "$selected_path" &
+    fi
+else
+    echo "Error: Selected alias does not correspond to a directory."
+    exit 1
+fi

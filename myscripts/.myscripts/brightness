@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Prompt the user to enter the desired brightness
+brightness=$(echo "" | dmenu -p "Enter the desired brightness(min-1 and max-100):")
+
+# Set the color temperature using redshift
+light -S "$brightness"
+
+# Display a notification
+notify-send "brightness was set to:" "$brightness %"

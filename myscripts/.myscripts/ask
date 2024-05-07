@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check if there's an argument provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <question>"
+    exit 1
+fi
+
+# Execute the command with the provided question
+tgpt -q "$1" | ~/Downloads/piper/piper --model ~/Downloads/piper/en_GB-vctk-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -

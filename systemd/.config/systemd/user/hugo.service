@@ -1,0 +1,11 @@
+[Unit]
+Description=hugo website server
+
+[Service]
+Type=simple
+StandardOutput=journal
+WorkingDirectory=/home/debian/Downloads/blog
+ExecStart=/home/debian/.nix-profile/bin/hugo server
+
+[Install]
+WantedBy=default.target

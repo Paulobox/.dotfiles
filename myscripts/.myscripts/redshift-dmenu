@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Prompt the user to choose an option using dmenu
+option=$(printf "red(3.6k)\nred(4.6k)\nturn off redshift❌" | dmenu -p "Kelvin temp(1000k-25000k max):")
+
+case "$option" in
+    "red(3.6k)")
+        redshift -m randr -PO 3600 ;;
+    "red(4.6k)")
+        redshift -m randr -PO 4600 ;;
+    "turn off redshift❌")
+        redshift -m randr -x
+        notify-send "Redshift turned off" ;;
+    *)
+        # Check if input is numeric and set the color temperature directly
+        if [ "$option" -eq "$option" ] 2>/dev/null; then
+            redshift -m randr -PO "$option"
+            notify-send "Color temperature set" "Kelvin temperature: $option K"
+        fi
+        ;;
+esac

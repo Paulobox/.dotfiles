@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Qalculate
+Exec=/usr/bin/qalculate
+Icon=/home/debian/.local/share/icons/qalculate.svg
+Terminal=false
+Type=Application
+StartupWMClass=qalculate
+Categories=GTK;Utility;Calculator;Science;Math;

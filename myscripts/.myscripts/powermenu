@@ -1,0 +1,16 @@
+#!/bin/sh
+# Power menu script using rofi
+
+set -e
+set -u
+
+CHOSEN=$(printf "Lock\nSuspend\nReboot\nShutdown\nLog Out" | rofi -dmenu -i -theme-str "@import \"${HOME}/.config/rofi/config.rasi\"")
+
+case "$CHOSEN" in
+    "Lock") lockscreen ;;
+    "Suspend") systemctl suspend-then-hibernate ;;
+    "Reboot") reboot ;;
+    "Shutdown") poweroff ;;
+    "Log Out") hyprctl dispatch exit ;;
+    *) exit 1 ;;
+esac

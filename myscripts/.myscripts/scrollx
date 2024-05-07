@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Get the ID of the Logitech device
+id=$(xinput | sed 's/[[:space:][:punct:]]//g' | sed '/keyboard/d' | grep 'Logitech' | sed 's/.*id\([0-9]*\).*/\1/')
+
+# Check if ID is found
+if [ -n "$id" ]; then
+    # Disable scrolling for the device
+    xinput set-prop $id "libinput Scroll Method Enabled" 0, 0, 0
+    notify-send "Scrolling disabled" "Scrolling disabled for Logitech device with ID $id"
+else
+    notify-send "Device not found" "Logitech device not found"
+fi

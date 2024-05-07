@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="panel-1" type="empty">
+      <property name="length" type="uint" value="100"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="1"/>
+        <value type="int" value="5"/>
+        <value type="int" value="4"/>
+        <value type="int" value="6"/>
+        <value type="int" value="13"/>
+        <value type="int" value="7"/>
+        <value type="int" value="23"/>
+        <value type="int" value="25"/>
+        <value type="int" value="24"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
+        <value type="int" value="11"/>
+        <value type="int" value="12"/>
+        <value type="int" value="14"/>
+        <value type="int" value="15"/>
+        <value type="int" value="16"/>
+        <value type="int" value="17"/>
+        <value type="int" value="18"/>
+        <value type="int" value="19"/>
+        <value type="int" value="20"/>
+        <value type="int" value="21"/>
+        <value type="int" value="2"/>
+        <value type="int" value="22"/>
+        <value type="int" value="3"/>
+      </property>
+      <property name="position" type="string" value="p=4;x=0;y=0"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="size" type="uint" value="35"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-1" type="string" value="whiskermenu">
+      <property name="command-switchuser" type="string" value="dm-tool switch-to-greeter"/>
+      <property name="favorites" type="array">
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="root-terminal.desktop"/>
+        <value type="string" value="xfce4-file-manager.desktop"/>
+        <value type="string" value="xfce-text-editor.desktop"/>
+        <value type="string" value="xfce4-web-browser.desktop"/>
+        <value type="string" value="kali-www.desktop"/>
+        <value type="string" value="kali-docs.desktop"/>
+        <value type="string" value="kali-bugs.desktop"/>
+        <value type="string" value="offsec-training.desktop"/>
+        <value type="string" value="exploit-database.desktop"/>
+        <value type="string" value="vulnhub.desktop"/>
+        <value type="string" value="xfce4-settings-editor.desktop"/>
+        <value type="string" value="thorium-browser.desktop"/>
+        <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
+        <value type="string" value="fish.desktop"/>
+      </property>
+      <property name="favorites-in-recent" type="bool" value="true"/>
+      <property name="menu-width" type="int" value="605"/>
+      <property name="position-search-alternate" type="bool" value="true"/>
+      <property name="recent" type="array">
+        <value type="string" value="lightdm-gtk-greeter-settings.desktop"/>
+        <value type="string" value="xfce-keyboard-settings.desktop"/>
+        <value type="string" value="kali-nmap.desktop"/>
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+        <value type="string" value="kali-undercover.desktop"/>
+        <value type="string" value="kali-amass.desktop"/>
+        <value type="string" value="cherrytree.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-10" type="string" value="separator"/>
+    <property name="plugin-11" type="string" value="tasklist">
+      <property name="flat-buttons" type="bool" value="false"/>
+      <property name="grouping" type="uint" value="0"/>
+      <property name="middle-click" type="uint" value="1"/>
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="show-labels" type="bool" value="true"/>
+      <property name="show-tooltips" type="bool" value="true"/>
+      <property name="sort-order" type="uint" value="1"/>
+    </property>
+    <property name="plugin-12" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-13" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17006102716.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-14" type="string" value="systray">
+      <property name="known-items" type="array">
+        <value type="string" value="Screenkey"/>
+        <value type="string" value="chrome_status_icon_1"/>
+      </property>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="polkit-mate-authentication-agent-1"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (74%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (65%) vpn connection active"/>
+        <value type="string" value="mocicon"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (66%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (59%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (61%) vpn connection active"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (63%) vpn connection active"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (66%) vpn connection active"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (57%) vpn connection active"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (71%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (69%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (68%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (70%)"/>
+        <value type="string" value="wi-fi network connection “plusnet-jgc2q8” active: plusnet-jgc2q8 (67%)"/>
+        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="no network connection"/>
+      </property>
+      <property name="size-max" type="uint" value="22"/>
+      <property name="square-icons" type="bool" value="true"/>
+      <property name="symbolic-icons" type="bool" value="false"/>
+    </property>
+    <property name="plugin-15" type="string" value="genmon"/>
+    <property name="plugin-16" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="known-players" type="string" value="audacious;cmus;Thorium"/>
+    </property>
+    <property name="plugin-17" type="string" value="notification-plugin"/>
+    <property name="plugin-18" type="string" value="power-manager-plugin"/>
+    <property name="plugin-19" type="string" value="clock">
+      <property name="digital-date-format" type="string" value="%d %B %Y"/>
+      <property name="digital-layout" type="uint" value="1"/>
+      <property name="digital-time-font" type="string" value="Cantarell 11"/>
+      <property name="digital-time-format" type="string" value="%_H:%M"/>
+    </property>
+    <property name="plugin-2" type="string" value="xkb">
+      <property name="display-type" type="uint" value="2"/>
+    </property>
+    <property name="plugin-20" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-21" type="string" value="separator"/>
+    <property name="plugin-22" type="string" value="actions">
+      <property name="appearance" type="uint" value="0"/>
+      <property name="items" type="array">
+        <value type="string" value="+lock-screen"/>
+        <value type="string" value="-switch-user"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="-suspend"/>
+        <value type="string" value="-hibernate"/>
+        <value type="string" value="-hybrid-sleep"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="-shutdown"/>
+        <value type="string" value="-restart"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+logout"/>
+        <value type="string" value="-logout-dialog"/>
+      </property>
+    </property>
+    <property name="plugin-23" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17028346051.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-3" type="string" value="showdesktop"/>
+    <property name="plugin-4" type="string" value="directorymenu">
+      <property name="base-directory" type="string" value="/home/kali"/>
+      <property name="icon-name" type="string" value="system-file-manager"/>
+    </property>
+    <property name="plugin-5" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17006098761.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-6" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17006098762.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-7" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17006098763.desktop"/>
+        <value type="string" value="17006098764.desktop"/>
+        <value type="string" value="17006098765.desktop"/>
+      </property>
+      <property name="move-first" type="bool" value="true"/>
+    </property>
+    <property name="plugin-8" type="string" value="separator"/>
+    <property name="plugin-9" type="string" value="pager">
+      <property name="miniature-view" type="bool" value="false"/>
+      <property name="rows" type="uint" value="1"/>
+    </property>
+    <property name="plugin-24" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17070892101.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-25" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="17072288181.desktop"/>
+      </property>
+    </property>
+  </property>
+</channel>

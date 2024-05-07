@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# this script is designed to find hosts with MySQL installed
+
+nmap -sT 191.168.1.90/24 -p 3306 >/dev/null
+
+cat MySQLscan | grep open > MySQLscan2
+
+cat MySQLscan2

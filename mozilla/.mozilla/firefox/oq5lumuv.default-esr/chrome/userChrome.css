@@ -1,0 +1,11 @@
+/* Change font of Firefox URL bar and Search bar */
+#urlbar, #searchbar .searchbar-textbox {
+    /*font-size: 13px !important; /* Set it to the default font size */
+    /*font-family: "Lilex Nerd Font Medium" !important; */
+    /* font-weight: normal !important; /1* Set it to medium weight *1/ */
+    /* font-family: "Hack Nerd Font" !important; */
+    /* font-family: "MesloLG Nerd Font", monospace !important; */
+    /* font-family: "CodeNewRoman Nerd Font", monospace !important; */
+    /* font-family: "FiraCode Nerd Font", monospace !important; */
+    /* font-family: "CaskaydiaCove Nerd Font" !important; */
+}

@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+# Aliases
+declare -A aliases=(
+    ["nvim init.lua"]=$HOME/.config/nvim/init.lua
+    ["awesome rc.lua"]=$HOME/.config/awesome/rc.lua
+    ["awesome theme.lua"]=$HOME/.config/awesome/theme.lua
+    ["fish"]=$HOME/.config/fish/config.fish
+    ["kitty"]=$HOME/.config/kitty/kitty.conf
+    ["rofi"]=$HOME/.config/rofi/config.rasi
+    ["nxsiv"]=$HOME/.config/nxsiv/exec/key-handler
+    ["picom"]=$HOME/.config/picom/picom.conf
+    ["zsh"]=$HOME/.zshrc
+    ["de"]=$HOME/.myscripts/dirjump
+    ["cedit"]=$HOME/.myscripts/cedit
+    ["config"]=$HOME/.config
+    ["usr/local/bin"]=/usr/local/bin
+    # ["alacritty"]=$HOME/.config/alacritty/alacritty.yml
+    # ["sxhkd"]=$HOME/.config/sxhkd/sxhkdrc
+    # ["bspwmrc"]=$HOME/.config/bspwm/bspwmrc
+    # ["polybar"]=$HOME/.config/polybar/config.ini
+    # ["i3"]=$HOME/.config/i3/config
+)
+
+# Function to list all files in specified directory
+list_files() {
+    dir=$1
+    ls "$dir"
+}
+
+# Dmenu Format
+dmenu="dmenu -i -l 12 -fn monospace-12 -p Edit_Config:"
+
+# Editor
+editor=nvim
+
+# Terminal
+term=kitty
+
+# Items Array
+items=("${!aliases[@]}")
+items+=("lf file manager")
+items+=("neofetch")
+items+=("shell")
+items+=("tmux")
+items+=("dwmconfig")
+items+=("myscripts")
+items+=("Nvim plugins")
+items+=("Nvim core")
+items+=("Nvim lsp")
+items+=("conky")
+items+=("lightdm")
+items+=("alacritty")
+items+=("moc")
+
+# Main Loop
+for i in "${items[@]}"; do
+    echo "$i"
+done | $dmenu | while read -r selected; do
+    if [ "$selected" = "Nvim plugins" ]; then
+        list_files "$HOME/.config/nvim/lua/plugins/" | $dmenu | while read -r lp_file; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/plugins/$lp_file"
+        done
+    elif [ "$selected" = "Nvim core" ]; then
+        list_files "$HOME/.config/nvim/lua/core/" | $dmenu | while read -r co_file; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/core/$co_file"
+        done
+    elif [ "$selected" = "Nvim lsp" ]; then
+        list_files "$HOME/.config/nvim/lua/lsp/" | $dmenu | while read -r ls_file; do
+            "$term" -e "$editor" "$HOME/.config/nvim/lua/lsp/$ls_file"
+        done
+    elif [ "$selected" = "lf file manager" ]; then
+        list_files "$HOME/.config/lf" | $dmenu | while read -r lf_file; do
+            "$term" -e "$editor" "$HOME/.config/lf/$lf_file"
+        done
+    elif [ "$selected" = "neofetch" ]; then
+        list_files "$HOME/.config/neofetch" | $dmenu | while read -r n_file; do
+            "$term" -e "$editor" "$HOME/.config/neofetch/$n_file"
+        done
+    elif [ "$selected" = "shell" ]; then
+        list_files "$HOME/.config/shell" | $dmenu | while read -r s_file; do
+            "$term" -e "$editor" "$HOME/.config/shell/$s_file"
+        done
+    elif [ "$selected" = "tmux" ]; then
+        list_files "$HOME/.config/tmux" | $dmenu | while read -r t_file; do
+            "$term" -e "$editor" "$HOME/.config/tmux/$t_file"
+        done
+    elif [ "$selected" = "dwmconfig" ]; then
+        list_files "$HOME/.config/dwmconfig" | $dmenu | while read -r dw_file; do
+            "$term" -e "$editor" "$HOME/.config/dwmconfig/$dw_file"
+        done
+    elif [ "$selected" = "myscripts" ]; then
+        list_files "$HOME/.myscripts" | $dmenu | while read -r m_file; do
+            "$term" -e "$editor" "$HOME/.myscripts//$m_file"
+        done
+    elif [ "$selected" = "conky" ]; then
+        list_files "$HOME/.config/conky" | $dmenu | while read -r c_file; do
+            "$term" -e "$editor" "$HOME/.config/conky/$c_file"
+        done
+    elif [ "$selected" = "lightdm" ]; then
+        list_files "/etc/lightdm/" | $dmenu | while read -r ld_file; do
+            "$term" -e "$editor" "etc/lightdm/$ld_file"
+        done
+    elif [ "$selected" = "alacritty" ]; then
+        list_files "$HOME/.config/alacritty/" | $dmenu | while read -r ac_file; do
+            "$term" -e "$editor" "$HOME/.config/alacritty/$ac_file"
+        done
+    elif [ "$selected" = "moc" ]; then
+        list_files "$HOME/.moc/" | $dmenu | while read -r mc_file; do
+            "$term" -e "$editor" "$HOME/.moc/$mc_file"
+        done
+    elif [ -n "${aliases[$selected]}" ]; then
+        "$term" -e "$editor" "${aliases[$selected]}"
+    fi
+done
