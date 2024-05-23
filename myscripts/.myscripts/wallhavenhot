@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Wallhaven search URL for Hot content on page 2
+URL="https://wallhaven.cc/api/v1/search?sorting=hot&page=2"
+
+# Fetch the wallpaper URL using curl and parse it with jq
+WALLPAPER_URL=$(curl -s "$URL" | jq -r '.data[0].path')
+WALLPAPER_ID=$(echo "$WALLPAPER_URL" | grep -oP '(?<=wallhaven-)\w+')
+
+# Check if the URL was fetched successfully
+if [ -z "$WALLPAPER_URL" ] || [ "$WALLPAPER_URL" == "null" ]; then
+  echo "Failed to fetch wallpaper URL."
+  exit 1
+fi
+
+# Download the wallpaper to a local file
+WALLPAPER_FILE="/tmp/wallpaper-$WALLPAPER_ID.jpg"
+curl -s "$WALLPAPER_URL" --output "$WALLPAPER_FILE"
+
+# Check if the wallpaper was downloaded successfully
+if [ ! -f "$WALLPAPER_FILE" ]; then
+  echo "Failed to download wallpaper."
+  exit 1
+fi
+
+# Set the wallpaper using xwallpaper
+xwallpaper --zoom "$WALLPAPER_FILE"
+
+# Use Pywal to generate and apply a color scheme
+if command -v wal >/dev/null 2>&1; then
+    wal -c  # Clear the cache
+    wal -n -i "$WALLPAPER_FILE" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+else
+    echo "Pywal is not installed. Skipping color scheme generation."
+fi
+
+# Fetch wallpaper details using the wallpaper ID
+DETAILS_URL="https://wallhaven.cc/api/v1/w/$WALLPAPER_ID"
+WALLPAPER_DETAILS=$(curl -s "$DETAILS_URL")
+
+# Display wallpaper details
+echo "Wallpaper Details:"
+echo "ID: $WALLPAPER_ID"
+echo "URL: https://wallhaven.cc/w/$WALLPAPER_ID"
+echo "Views: $(echo $WALLPAPER_DETAILS | jq '.data.views')"
+echo "Favorites: $(echo $WALLPAPER_DETAILS | jq '.data.favorites')"
+echo "Uploader: $(echo $WALLPAPER_DETAILS | jq -r '.data.uploader.username')"
+FILE_SIZE_BYTES=$(echo $WALLPAPER_DETAILS | jq '.data.file_size')
+FILE_SIZE_MB=$(echo "$FILE_SIZE_BYTES" | awk '{printf "%.2f MB\n", $1/1024/1024}')
+echo "File Size: $FILE_SIZE_MB"
