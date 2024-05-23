@@ -1,21 +1,35 @@
 #!/bin/bash
 
-# Wallhaven search URL for Hot content on page 2
-URL="https://wallhaven.cc/api/v1/search?sorting=hot&page=2"
+# Initialize an array to hold all wallpaper URLs
+declare -a WALLPAPER_URLS
 
-# Fetch the wallpaper URL using curl and parse it with jq
-WALLPAPER_URL=$(curl -s "$URL" | jq -r '.data[0].path')
-WALLPAPER_ID=$(echo "$WALLPAPER_URL" | grep -oP '(?<=wallhaven-)\w+')
+# Loop through pages 1 to 5 to gather wallpaper URLs
+for PAGE in {1..5}
+do
+    echo "Fetching wallpapers from page $PAGE..."
 
-# Check if the URL was fetched successfully
-if [ -z "$WALLPAPER_URL" ] || [ "$WALLPAPER_URL" == "null" ]; then
-  echo "Failed to fetch wallpaper URL."
-  exit 1
-fi
+    # Wallhaven search URL for Hot content on current page
+    URL="https://wallhaven.cc/api/v1/search?sorting=hot&page=$PAGE"
 
-# Download the wallpaper to a local file
-WALLPAPER_FILE="/tmp/wallpaper-$WALLPAPER_ID.jpg"
-curl -s "$WALLPAPER_URL" --output "$WALLPAPER_FILE"
+    # Fetch the wallpaper data using curl and parse it with jq to extract URLs
+    PAGE_WALLPAPER_URLS=$(curl -s "$URL" | jq -r '.data[].path')
+
+    # Append each URL to the WALLPAPER_URLS array
+    for URL in $PAGE_WALLPAPER_URLS; do
+        WALLPAPER_URLS+=("$URL")
+    done
+done
+
+# Generate a random index to select one wallpaper from the array
+RANDOM_INDEX=$(($RANDOM % ${#WALLPAPER_URLS[@]}))
+
+# Extract the selected wallpaper URL
+SELECTED_WALLPAPER_URL="${WALLPAPER_URLS[$RANDOM_INDEX]}"
+SELECTED_WALLPAPER_ID=$(echo "$SELECTED_WALLPAPER_URL" | grep -oP '(?<=wallhaven-)\w+')
+
+# Download the selected wallpaper to a local file
+WALLPAPER_FILE="/tmp/wallpaper-$SELECTED_WALLPAPER_ID.jpg"
+curl -s "$SELECTED_WALLPAPER_URL" --output "$WALLPAPER_FILE"
 
 # Check if the wallpaper was downloaded successfully
 if [ ! -f "$WALLPAPER_FILE" ]; then
@@ -35,13 +49,13 @@ else
 fi
 
 # Fetch wallpaper details using the wallpaper ID
-DETAILS_URL="https://wallhaven.cc/api/v1/w/$WALLPAPER_ID"
+DETAILS_URL="https://wallhaven.cc/api/v1/w/$SELECTED_WALLPAPER_ID"
 WALLPAPER_DETAILS=$(curl -s "$DETAILS_URL")
 
 # Display wallpaper details
 echo "Wallpaper Details:"
-echo "ID: $WALLPAPER_ID"
-echo "URL: https://wallhaven.cc/w/$WALLPAPER_ID"
+echo "ID: $SELECTED_WALLPAPER_ID"
+echo "URL: https://wallhaven.cc/w/$SELECTED_WALLPAPER_ID"
 echo "Views: $(echo $WALLPAPER_DETAILS | jq '.data.views')"
 echo "Favorites: $(echo $WALLPAPER_DETAILS | jq '.data.favorites')"
 echo "Uploader: $(echo $WALLPAPER_DETAILS | jq -r '.data.uploader.username')"
