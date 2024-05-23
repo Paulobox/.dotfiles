@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Wallhaven search URL for SFW content
+URL="https://wallhaven.cc/api/v1/search?q=anime&categories=111&purity=100&sorting=random&atleast=1920x1080"
+
+# Fetch the wallpaper URL using curl and parse it with jq
+WALLPAPER_URL=$(curl -s "$URL" | jq -r '.data[0].path')
+
+# Check if the URL was fetched successfully
+if [ -z "$WALLPAPER_URL" ] || [ "$WALLPAPER_URL" == "null" ]; then
+  echo "Failed to fetch wallpaper URL."
+  exit 1
+fi
+
+# Download the wallpaper to a local file
+curl -s "$WALLPAPER_URL" --output /tmp/wallpaper.jpg
+
+# Check if the wallpaper was downloaded successfully
+if [ ! -f /tmp/wallpaper.jpg ]; then
+  echo "Failed to download wallpaper."
+  exit 1
+fi
+
+# Set the wallpaper using xwallpaper
+xwallpaper --zoom /tmp/wallpaper.jpg
