@@ -14,20 +14,22 @@ if [ -z "$WALLPAPER_URL" ] || [ "$WALLPAPER_URL" == "null" ]; then
 fi
 
 # Download the wallpaper to a local file
-curl -s "$WALLPAPER_URL" --output /tmp/wallpaper.jpg
+WALLPAPER_FILE="/tmp/wallpaper-$WALLPAPER_ID.jpg"
+curl -s "$WALLPAPER_URL" --output "$WALLPAPER_FILE"
 
 # Check if the wallpaper was downloaded successfully
-if [ ! -f /tmp/wallpaper.jpg ]; then
+if [ ! -f "$WALLPAPER_FILE" ]; then
   echo "Failed to download wallpaper."
   exit 1
 fi
 
 # Set the wallpaper using xwallpaper
-xwallpaper --zoom /tmp/wallpaper.jpg
+xwallpaper --zoom "$WALLPAPER_FILE"
 
 # Use Pywal to generate and apply a color scheme
 if command -v wal >/dev/null 2>&1; then
-    wal -n -i /tmp/wallpaper.jpg -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
+    wal -c  # Clear the cache
+    wal -n -i "$WALLPAPER_FILE" -o "${XDG_CONFIG_HOME:-$HOME/.config}/wal/postrun" >/dev/null 2>&1
 else
     echo "Pywal is not installed. Skipping color scheme generation."
 fi
