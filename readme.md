@@ -548,6 +548,8 @@ echo -e "[Desktop Entry]\nName=dwm\nComment=dynamic window manager\nExec=dwm\nTr
 
 ---
 
+<br><br><br>
+
 # Other 🐧 Linux commands
 <a id="no bios beeping"></a>
 #### no bios beeping (disable laptop's speaker for annoying bios beeps in linux)
