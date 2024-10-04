@@ -28,16 +28,10 @@ sudo pacman -S git stow wget unzip zsh --noconfirm
 </details>
 
 # .dotfiles install
-1.
+
 ```
 git clone https://github.com/Paulobox/.dotfiles
-```
-2.
-```
 cd .dotfiles
-```
-4.
-```
 stow alacritty mocp nsxiv tmux awesome i3 kitty myscripts rofi vscode conky fish lf picom dunst zathura
 ```
 
