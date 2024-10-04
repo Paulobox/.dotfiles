@@ -5,6 +5,7 @@
 <a href="#asciiquarium"><kbd> <br> asciiquarium <br> </kbd></a>&ensp;&ensp;
 <a href="#awesome-wm"><kbd> <br> Awesome-WM <br> </kbd></a>&ensp;&ensp;
 <a href="#eza"><kbd> <br> Eza <br> </kbd></a>&ensp;&ensp;
+<a href="#nsxiv"><kbd> <br> nsxiv <br> </kbd></a>&ensp;&ensp;
 <a href="#fzf"><kbd> <br> fzf <br> </kbd></a>&ensp;&ensp;
 <a href="#nala"><kbd> <br> Nala(debian) <br> </kbd></a>&ensp;&ensp;
 <a href="#neovim"><kbd> <br> Neovim <br> </kbd></a>&ensp;&ensp;
@@ -90,6 +91,27 @@ source ~/.zshrc
 echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list; wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
 sudo apt update && sudo apt install nala -y
 ```
+
+# [nsxiv](https://github.com/eza-community/eza)](https://github.com/nsxiv/nsxiv)
+
+```
+chmod u+x ~/.config/nsxiv/exec/key-handler
+```
+
+| Key | Action |
+|-----|--------|
+| w | Set the current image as wallpaper |
+| c | Copy the current image to a directory (selected via dmenu) |
+| m | Move the current image to a directory (selected via dmenu) |
+| r | Rotate the image 90 degrees clockwise |
+| R | Rotate the image 90 degrees counterclockwise |
+| f | Flip the image horizontally |
+| y | Copy the filename to clipboard |
+| Y | Copy the full file path to clipboard |
+| d | Delete the current image (with confirmation) |
+| g | Open the image in GIMP |
+| i | Show file information using mediainfo |
+
 
 # [Eza](https://github.com/eza-community/eza)
 ```
