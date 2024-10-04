@@ -92,7 +92,7 @@ echo "deb http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.l
 sudo apt update && sudo apt install nala -y
 ```
 
-# [nsxiv](https://github.com/eza-community/eza)](https://github.com/nsxiv/nsxiv)
+# [nsxiv](https://github.com/nsxiv/nsxiv)
 
 ```
 chmod u+x ~/.config/nsxiv/exec/key-handler
