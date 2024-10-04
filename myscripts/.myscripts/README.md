@@ -28,10 +28,6 @@ find /usr/local/bin -xtype l ! -exec test -e {} \; -delete
 ```
 </details>
 
-## 3. export PATH=$PATH:~/.myscripts (add it to .zshrc or .bashrc)
-```
-export PATH="$HOME/.myscripts:$PATH"
-```
 <br>
 
 #### stow .local/bin/ and export status-bar scripts for dwm(window manager)
