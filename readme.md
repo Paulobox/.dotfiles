@@ -98,7 +98,7 @@ sudo apt update && sudo apt install nala -y
 chmod u+x ~/.config/nsxiv/exec/key-handler
 ```
 
-<kbd>Ctrl</kbd> + <kbd>x</kbd> to use key handler in nsxiv
+#### <kbd>Ctrl</kbd> + <kbd>x</kbd> to use key handler in nsxiv
 
 | Key | Action |
 |-----|--------|
