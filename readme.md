@@ -31,7 +31,10 @@ sudo pacman -S git stow wget unzip zsh --noconfirm
 
 ```
 git clone https://github.com/Paulobox/.dotfiles
-cd .dotfiles
+```
+
+```
+cd ~/.dotfiles
 stow x11 alacritty mocp nsxiv tmux awesome i3 kitty myscripts rofi vscode conky fish lf picom dunst zathura
 ```
 
