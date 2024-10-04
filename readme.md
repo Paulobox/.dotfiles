@@ -466,7 +466,7 @@ XRDB_LOAD_COLOR("dwm.color14", selbgcolor);
 <details><summary> <b>debian dependencies</b> </summary>
 
 ```
-sudo apt install -f build-essential libxrandr-dev libx11-dev libxft-dev libxcb-res0-dev libx11-xcb-dev libxinerama-dev libfreetype6-dev libfontconfig1-dev xcompmgr xwallpaper -y
+sudo apt install -f build-essential libxrandr-dev libx11-dev libxft-dev libxcb-res0-dev libx11-xcb-dev libxinerama-dev libharfbuzz-dev libfreetype6-dev libfontconfig1-dev xcompmgr xwallpaper -y
 ```
 
 <!--
