@@ -12,7 +12,7 @@ chmod u+x ~/.dotfiles/myscripts/.myscripts
 
 ## 2. create symbolic links to /usr/local/bin
 ```
-ls -p ~/.myscripts | grep -v -e 'README.md' -e 'emojis/' -e 'pythonscripts/' | xargs -I {} sudo ln -s ~/.myscripts/{} /usr/local/bin/
+ls -p ~/.dotfiles/myscripts/.myscripts | grep -v -e 'README.md' -e 'emojis/' -e 'pythonscripts/' | xargs -I {} sudo ln -s ~/.myscripts/{} /usr/local/bin/
 ```
 <details><summary>create symbolic links and overwrite</summary>
   
