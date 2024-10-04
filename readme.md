@@ -32,9 +32,16 @@ sudo pacman -S git stow wget unzip zsh --noconfirm
 ```
 git clone https://github.com/Paulobox/.dotfiles
 ```
-2. cd .dotfiles
-3. stow alacritty mocp nsxiv tmux awesome i3 kitty myscripts rofi vscode conky fish lf picom dunst zathura
-4. for scripts make [symbolic links](https://github.com/Paulobox/.dotfiles/blob/main/myscripts/.myscripts/README.md)
+2.
+```
+cd .dotfiles
+```
+4.
+```
+stow alacritty mocp nsxiv tmux awesome i3 kitty myscripts rofi vscode conky fish lf picom dunst zathura
+```
+
+6. for scripts make [symbolic links](https://github.com/Paulobox/.dotfiles/blob/main/myscripts/.myscripts/README.md)
 
 # dependencies fresh install
 ```
