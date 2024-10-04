@@ -3,9 +3,11 @@
 export PATH="$PATH:$(find ~/.dotfiles/myscripts -type d | paste -sd ':' -)"
 ```
 
+<br><br><br>
+
 ## 1. make all files executable
 ```
-chmod u+x ~/.myscripts/*
+chmod u+x ~/.dotfiles/myscripts/.myscripts
 ```
 
 ## 2. create symbolic links to /usr/local/bin
