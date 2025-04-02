@@ -63,6 +63,23 @@ sleep 4
 sudo rm -rf ~/.config/zsh/.zshrc
 sudo ln -s ~/.dotfiles/zsh/.zshrc ~/.config/zsh/
 ```
+
+<details><summary> <b>arch </b> </summary>
+
+```
+cd ~
+sudo rm -rf ~/.oh-my-zsh
+echo "Y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+sleep 4
+sudo rm -rf ~/.config/zsh/.zshrc
+sudo ln -s ~/.dotfiles/zsh/.zshrc ~/.config/zsh/
+```
+
+</details>
+
 #### change shell to zsh
 ```
 chsh -s $(which zsh)
@@ -460,7 +477,7 @@ sudo pip install pywal
 ```
 sudo pacman -S python-pip xwallpaper xdotool --noconfirm
 sudo rm -vf /usr/lib/python3.12/EXTERNALLY-MANAGED
-sudo pip install pywal
+sudo pacman -S python-pywal
 ```
 </details>
 
