@@ -46,7 +46,7 @@ stow x11 alacritty mocp nsxiv tmux awesome i3 kitty myscripts rofi vscode conky 
 sudo apt update && sudo apt install -f git stow zsh dunst unclutter imagemagick alacritty moc nsxiv tmux zsh awesome i3 kitty rofi conky fish lf neofetch picom redshift systemd xfce4 xinput gimp gpg pass zathura zoxide wget alsa-utils flameshot gpick libnotify -y
 ```
 <details><summary>arch</summary>
-sudo pacman -Syu --needed git libnotify imagemagick stow alacritty dunst tmux zsh unclutter awesome kitty rofi conky fish lf nsxiv neofetch picom redshift systemd xf86-input-libinput gimp gnupg pass zathura zoxide wget alsa-utils eza flameshot gpick python-pip --noconfirm
+sudo pacman -Syu --needed git libnotify slock imagemagick stow alacritty dunst tmux zsh unclutter awesome kitty rofi conky fish lf nsxiv neofetch picom redshift systemd xf86-input-libinput gimp gnupg pass zathura zoxide wget alsa-utils eza flameshot gpick python-pip --noconfirm
 </details>
 
 ---
