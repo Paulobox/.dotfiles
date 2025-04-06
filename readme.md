@@ -248,7 +248,7 @@ git clone https://github.com/Paulobox/nvim
 rm -rf ~/.local/share/nvim && rm -rf ~/.local/state/nvim
 cd ~/.config
 rm -rf nvim
-sudo pacman -Syu npm ripgrep python-virtualenv --noconfirm
+sudo pacman -Syu --needed npm ripgrep python-virtualenv --noconfirm
 git clone https://github.com/Paulobox/nvim
 ```
 
