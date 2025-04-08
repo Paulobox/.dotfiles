@@ -303,6 +303,7 @@ libtool --finish /usr/lib/x86_64-linux-gnu/rofi//
 ```
 </details>
 
+### [rofi-emoji](https://github.com/Mange/rofi-emoji)
 <details><summary>arch</summary>
 
 ```
@@ -310,7 +311,7 @@ sudo pacman -S rofi-calc --noconfirm
 ```
 </details>
 
-### pacman -S rofi-emoji
+
 
 <details><summary>arch</summary>
   
