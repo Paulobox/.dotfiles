@@ -310,6 +310,15 @@ sudo pacman -S rofi-calc --noconfirm
 ```
 </details>
 
+### pacman -S rofi-emoji
+
+<details><summary>arch</summary>
+  
+```
+pacman -S rofi-emoji  
+```
+</details>
+
 ### [CLIPMENU](https://github.com/cdown/clipmenu)
 <details><summary>debian apt</summary>
 
