@@ -440,7 +440,8 @@ pip3 install lxml
 <details><summary>arch</summary>
   
 ```
-sudo pacman -S --needed gnupg pandoc gettext python-pip python-virtualenv ghostscript pandoc zenity bc --noconfirm
+sudo pacman -S --needed pinentry gnupg pandoc gettext python-pip python-virtualenv ghostscript pandoc zenity bc --noconfirm
+sudo ln -s /usr/bin/pinentry-gtk /usr/local/bin/pinentry-gtk-2
 python3 -m venv myenv
 source myenv/bin/activate
 pip3 install lxml
